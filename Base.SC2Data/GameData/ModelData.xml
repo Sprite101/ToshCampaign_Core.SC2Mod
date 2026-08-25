@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CModel id="ProximityMine" parent="Unit" Race="Terran">
+        <Model value="Assets\Units\Terran\SpiderMine\SpiderMine.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow02"/>
+        <Radius value="0.250000"/>
+        <SelectionLayer value="3"/>
+        <SelectionRadius value="0.250000"/>
+        <ShadowRadius value="0.250000"/>
+        <TechPurchaseCamera value="Star2CameraLow02"/>
+        <UnitGlossaryCamera value="Star2CameraLow02"/>
+    </CModel>
+    <CModel id="ProximityMine@Explosion" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\TerranSmallUnitDeath\TerranSmallUnitDeath.m3"/>
+        <LowQualityModel value="SpiderMineExplosionLow"/>
+        <EditorCategories value="Race:Terran"/>
+        <Occlusion value="Show"/>
+        <ScaleMax value="0.250000,0.250000,0.250000"/>
+        <ScaleMin value="0.250000,0.250000,0.250000"/>
+        <SelectionRadius value="2.000000"/>
+        <ShadowRadius value="2.000000"/>
+    </CModel>
+    <CModel id="SteadyTargeting_Tosh@Beam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\GhostSnipeBeam\GhostSnipeBeam.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value=""/>
+    </CModel>
+    <CModel id="SteadyTargeting_Tosh@LaunchModel" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\SnipeLaunch\SnipeLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="C10CanisterRifle_Default@ImpactModel" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\GhostWeaponImpact\GhostWeaponImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="C10CanisterRifle_Default@LaunchModel" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\GhostWeaponLaunch\GhostWeaponLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="C10CanisterRifle_Default@BunkerLaunchModel" parent="LaunchFX">
+        <Model value="Assets\Effects\Terran\GhostWeaponLaunch\GhostWeaponLaunch.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="ToshGhost_Default" parent="Unit">
+        <Model value="Assets\Units\Terran\Tosh\Tosh.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Flags index="AutoUnload" value="1"/>
+        <Lighting value="SpecterUnit"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid04"/>
+        <Radius value="0.375000"/>
+        <SelectionRadius value="0.375000"/>
+        <ShadowRadius value="0.375000"/>
+        <TechPurchaseCamera value="Star2CameraMid04"/>
+        <UnitGlossaryCamera value="Star2CameraMid04"/>
+    </CModel>
+    <CModel id="ToshGhost_Default@Death" parent="UnitDeath">
+        <Model value="Assets\Units\Terran\ToshDeath\ToshDeath.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="Flashbang_Tosh@ImpactModel" parent="OneShotSpellFX">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Effects\Terran\HyperionEMP\HyperionEMP.m3"/>
+        <AnimSpeed value="1.500000"/>
+        <ScaleMax value="0.300000,0.300000,0.300000"/>
+        <ScaleMin value="0.300000,0.300000,0.300000"/>
+        <RadiusLoose value="4.500000"/>
+    </CModel>
+    <CModel id="Flashbang_Tosh@MissileModel" parent="MissileFX">
+        <Model value="Assets\Effects\Terran\Nova_FlashGrenade_Missile\Nova_FlashGrenade_Missile.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <ScaleMax value="0.600000,0.600000,0.600000"/>
+        <ScaleMin value="0.600000,0.600000,0.600000"/>
+        <SelectionRadius value="0.833200"/>
+        <ShadowRadius value="0.833200"/>
+    </CModel>
+</Catalog>

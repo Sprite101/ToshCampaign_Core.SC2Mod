@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CUnit id="ProximityMine">
+        <DeathRevealRadius value="3"/>
+        <Race value="Terr"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
+        <Speed value="9"/>
+        <Acceleration value="1000"/>
+        <StationaryTurningRate value="2292.8906"/>
+        <Sight value="4"/>
+        <CostResource index="Minerals" value="25"/>
+        <RepairTime value="33.3332"/>
+        <AbilArray Link="ProximityMine@Burrow"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="move"/>
+        <BehaviorArray Link="VultureSpiderMineBurrowFirst"/>
+        <BehaviorArray Link="SpiderMineAttackSearch"/>
+        <WeaponArray Link="VultureSpiderMines"/>
+        <Radius value="0.125"/>
+        <SeparationRadius value="0"/>
+        <SubgroupPriority value="15"/>
+        <MinimapRadius value="0.25"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <TacticalAI value="SpiderMineVulture"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <GlossaryPriority value="160"/>
+        <HotkeyCategory value="Unit/Category/TerranStory"/>
+        <KillDisplay value="Never"/>
+        <RankDisplay value="Never"/>
+    </CUnit>
+    <CUnit id="ProximityMine@Burrowed">
+        <Name value="Unit/Name/ProximityMine"/>
+        <Description value="Button/Tooltip/SpiderMineVulture"/>
+        <DeathRevealRadius value="3"/>
+        <Race value="Terr"/>
+        <FlagArray index="Uncommandable" value="1"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <FlagArray index="Buried" value="1"/>
+        <FlagArray index="NoScore" value="1"/>
+        <FlagArray index="NoPortraitTalk" value="1"/>
+        <FlagArray index="ArmorDisabledWhileConstructing" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Burrow" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <Attributes index="Structure" value="1"/>
+        <LifeStart value="25"/>
+        <LifeMax value="25"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranVehiclePlating"/>
+        <Acceleration value="1000"/>
+        <StationaryTurningRate value="2292.8906"/>
+        <Sight value="4"/>
+        <CostResource index="Minerals" value="25"/>
+        <RepairTime value="33.3332"/>
+        <Radius value="0.125"/>
+        <SeparationRadius value="0"/>
+        <SubgroupPriority value="15"/>
+        <MinimapRadius value="0.25"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+        <TacticalAI value="SpiderMineVultureBurrowed"/>
+        <LeaderAlias value="SpiderMine"/>
+        <SelectAlias value="SpiderMine"/>
+        <EquipmentArray Weapon="VultureSpiderMines"/>
+    </CUnit>
+    <CUnit id="ToshGhost_Default">
+        <DeathRevealRadius value="3"/>
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="UseLineOfSight" value="1"/>
+        <FlagArray index="Cloaked" value="1"/>
+        <FlagArray index="ArmySelect" value="1"/>
+        <PlaneArray index="Ground" value="1"/>
+        <Collide index="Ground" value="1"/>
+        <Collide index="ForceField" value="1"/>
+        <Collide index="Locust" value="1"/>
+        <Collide index="Small" value="1"/>
+        <Attributes index="Biological" value="1"/>
+        <Attributes index="Psionic" value="1"/>
+        <LifeStart value="300"/>
+        <LifeMax value="300"/>
+        <LifeArmor value="2"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranInfantryArmor"/>
+        <EnergyStart value="75"/>
+        <EnergyMax value="250"/>
+        <EnergyRegenRate value="0.5625"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ToshGhost_DefaultShields"/>
+        <Speed value="3"/>
+        <Acceleration value="1000"/>
+        <LateralAcceleration value="46.0625"/>
+        <Sight value="13"/>
+        <CostCategory value="Army"/>
+        <RepairTime value="41.667"/>
+        <AttackTargetPriority value="20"/>
+        <DamageDealtXP value="1"/>
+        <DamageTakenXP value="1"/>
+        <KillXP value="30"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="SteadyTargeting_Tosh"/>
+        <AbilArray Link="Snipe_Tosh"/>
+        <AbilArray Link="Duel_Tosh"/>
+        <AbilArray Link="Flashbang_Tosh"/>
+        <BehaviorArray Link="HeroDetectorRadar"/>
+        <WeaponArray Link="C10CanisterRifle_Default"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="Attack" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="ChannelSnipe" Type="AbilCmd" AbilCmd="SteadyTargeting_Tosh,Execute" Row="2" Column="0"/>
+            <LayoutButtons Face="Cancel" Type="AbilCmd" AbilCmd="SteadyTargeting_Tosh,Cancel" Row="2" Column="4"/>
+            <LayoutButtons Face="Snipe_Tosh" Type="AbilCmd" AbilCmd="Snipe_Tosh,Execute" Row="2" Column="1"/>
+            <LayoutButtons Face="Duel_Tosh" Type="AbilCmd" AbilCmd="Duel_Tosh,Execute" Row="1" Column="0"/>
+            <LayoutButtons Face="Flashbang_Tosh" Type="AbilCmd" AbilCmd="Flashbang_Tosh,Execute" Row="2" Column="2"/>
+        </CardLayouts>
+        <Radius value="0.375"/>
+        <SeparationRadius value="0.375"/>
+        <CargoSize value="1"/>
+        <ScoreMake value="500"/>
+        <ScoreKill value="1000"/>
+        <SubgroupPriority value="25"/>
+        <EditorCategories value="ObjectType:Hero,ObjectFamily:Campaign"/>
+        <LeaderAlias value="Spectre"/>
+        <GlossaryCategory value="Unit/Category/TerranUnits"/>
+        <GlossaryPriority value="350"/>
+        <GlossaryWeakArray value="Raven"/>
+        <GlossaryWeakArray value="MissileTurret"/>
+        <HotkeyCategory value="Unit/Category/TerranStory"/>
+        <Fidget>
+            <ChanceArray index="Anim" value="33"/>
+            <ChanceArray index="Idle" value="33"/>
+            <ChanceArray index="Turn" value="33"/>
+        </Fidget>
+    </CUnit>
+    <CUnit id="Flashbang_Tosh@Missile" parent="MISSILE">
+        <Race value="Terr"/>
+        <Mover value="TossGrenade"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Campaign"/>
+    </CUnit>
+</Catalog>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CSound id="ProximityMine@Unburrow" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Vulture\Vulture_SpiderMinePlace0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Vulture\Vulture_SpiderMinePlace1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Vulture\Vulture_SpiderMinePlace2.wav"/>
+    </CSound>
+</Catalog>

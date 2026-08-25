@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CValidatorLocationEnumArea id="Duel_Tosh@TargetsGE1" parent="HostileSearch">
+        <ResultFailed value="CantFindEnoughTargets"/>
+        <WhichLocation Effect="Duel_Tosh@CP" Value="TargetPoint"/>
+        <AreaArray Radius="3"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+        <SearchFilters value="Ground,Biological,Visible;Player,Ally,Neutral,Worker,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorCombine id="SteadyTargeting_Tosh@Validators">
+        <Type value="And"/>
+        <CombineArray value="SteadyTargeting_Tosh@CasterHasCombatBehavior"/>
+        <CombineArray value="SteadyTargeting_Tosh@CasterFilters"/>
+        <CombineArray value="SteadyTargeting_Tosh@TargetFilters"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="SteadyTargeting_Tosh@CasterHasCombatBehavior">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="SteadyTargeting_Tosh@Combat"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="SteadyTargeting_Tosh@CasterHasRefundBehavior">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="SteadyTargeting_Tosh@Refund"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitFilters id="SteadyTargeting_Tosh@CasterFilters">
+        <WhichUnit Value="Caster"/>
+        <Filters value="-;Stasis,Dead,Hidden,Stunned"/>
+    </CValidatorUnitFilters>
+    <CValidatorUnitFilters id="SteadyTargeting_Tosh@TargetFilters">
+        <Filters value="Visible;Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorUnitFilters>
+</Catalog>

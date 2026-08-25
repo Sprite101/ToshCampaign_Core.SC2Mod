@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CBehaviorBuff id="Snipe_Tosh@Stun">
+        <InfoIcon value="Assets\Textures\stunswirl1_orange.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SteadyTargeting_Tosh@Refund">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="SteadyTargeting_Tosh@Combat">
+        <Alignment value="Positive"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <FinalEffect value="SteadyTargeting_Tosh@RefundSet"/>
+        <DamageResponse Handled="SteadyTargeting_Tosh@CombatRB">
+            <Chance value="1"/>
+        </DamageResponse>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="Flashbang_Tosh@Stun">
+        <InfoIcon value="Assets\Textures\btn-upgrade-vorazun-shadowstun.dds"/>
+        <BehaviorCategories index="Stun" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Duration value="5"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+            <DamageTakenFraction index="Spell" value="0.5"/>
+            <DamageTakenFraction index="Melee" value="0.5"/>
+            <DamageTakenFraction index="Ranged" value="0.5"/>
+            <DamageTakenFraction index="Splash" value="0.5"/>
+            <DamageTakenFraction index="NoProc" value="0.5"/>
+        </Modification>
+        <DurationOverride>
+            <Duration value="2"/>
+            <ValidatorArray value="IsHeroic"/>
+        </DurationOverride>
+    </CBehaviorBuff>
+</Catalog>

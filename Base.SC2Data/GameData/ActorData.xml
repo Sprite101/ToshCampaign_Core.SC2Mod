@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CActorSplat id="Duel_Tosh@CursorSplat" parent="TerranCursorSplat" abil="Duel_Tosh"/>
+    <CActorRange id="Duel_Tosh@Range" parent="RangeAbil" abil="Duel_Tosh">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorSound id="Flashbang_Tosh@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.Flashbang_Tosh@LM.Start" Send="Create"/>
+        <Sound value="Raynor_TossGrenadeLaunch"/>
+    </CActorSound>
+    <CActorModel id="Flashbang_Tosh@StunModel" parent="ModelAnimationStyleContinuous">
+        <Inherits index="Visibility" value="1"/>
+        <EditorCategories value=""/>
+        <On Terms="Behavior.FlyerBeastDiveHeightStun.On" Send="Create"/>
+        <On Terms="Behavior.FlyerBeastDiveHeightStun.Off" Send="Destroy"/>
+        <On Terms="Behavior.GreaterBeastStun.On" Send="Create"/>
+        <On Terms="Behavior.GreaterBeastStun.Off" Send="Destroy"/>
+        <On Terms="Behavior.Flashbang_Tosh@Stun.On" Send="Create"/>
+        <On Terms="Behavior.Flashbang_Tosh@Stun.Off" Send="Destroy"/>
+        <On Terms="Behavior.VoidZealotShadowChargeStun.On" Send="Create"/>
+        <On Terms="Behavior.VoidZealotShadowChargeStun.Off" Send="Destroy"/>
+        <On Terms="Behavior.Aiur05EMPWaveStun.On" Send="Create"/>
+        <On Terms="Behavior.Aiur05EMPWaveStun.Off" Send="Destroy"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="GenericStunOverheadModel"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModel>
+    <CActorModel id="Flashbang_Tosh@ImpactEffect" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.Flashbang_Tosh@SearchArea.Start" Send="Create"/>
+        <On Terms="Effect.Flashbang_Tosh@SearchArea.Stop" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpMoveUpByDot5"/>
+        <Model value="Flashbang_Tosh@ImpactModel"/>
+    </CActorModel>
+    <CActorUnit id="ProximityMine@Burrow" parent="GenericUnitStandard" unitName="ProximityMine">
+        <Aliases value="_UnitSmall"/>
+        <On Terms="UnitBirth.ProximityMine@Burrowed" Send="Create"/>
+        <On Terms="UnitBirth.ProximityMine@Burrowed" Send="AnimPlay Burrow Burrow PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphTo ProximityMine@Burrowed" Send="AnimPlay Burrow Burrow PlayForever,NonLooping"/>
+        <On Terms="AbilMorph.*.Start; MorphTo ProximityMine@Burrowed" Send="AnimClear Unburrow"/>
+        <On Terms="AbilMorph.*.Start; MorphTo ProximityMine" Send="AnimClear Burrow"/>
+        <On Terms="AbilMorph.*.Start; MorphTo ProximityMine" Send="AnimPlay Unburrow Unburrow"/>
+        <On Terms="AbilMorph.ProximityMine@Burrow.Start" Send="Create VultureSpiderMineBurrowSound"/>
+        <On Terms="Abil.attack.ReadyStart" Send="Create VultureSpiderMineSeekSound"/>
+        <DeathArray index="Normal" ModelLink="ProximityMine@Explosion" SoundLink="Terran_ExplosionSmall"/>
+        <PlacementModel value="SpiderMinePlacement"/>
+        <PortraitModel value="AdjutantPortrait"/>
+        <BarOffset value="10"/>
+        <BarWidth value="36"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-SpiderMine.dds"/>
+        </GroupIcon>
+        <GroupSoundArray index="Birth" value="SpiderMineBirth"/>
+        <GroupSoundArray index="Ready" value="SpiderMineReady"/>
+        <GroupSoundArray index="Help" value="SpiderMineHelp"/>
+        <GroupSoundArray index="What" value="SpiderMineWhat"/>
+        <GroupSoundArray index="Yes" value="SpiderMineYes"/>
+        <GroupSoundArray index="Attack" value="SpiderMineYes"/>
+        <GroupSoundArray index="Pissed" value="SpiderMinePissed"/>
+        <HeroIcon value="Assets\Textures\BTN-Unit-Terran-SpiderMine.dds"/>
+        <HighlightTooltip value="Unit/Name/SpiderMine"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-vehicleplatinglevel0.dds"/>
+        <NameOffset value="10"/>
+        <SoundArray index="Birth" value="SpiderMineBirth"/>
+        <SoundArray index="Ready" value="SpiderMineReady"/>
+        <SoundArray index="Help" value="SpiderMineHelp"/>
+        <SoundArray index="What" value="SpiderMineWhat"/>
+        <SoundArray index="Yes" value="SpiderMineYes"/>
+        <SoundArray index="Attack" value="SpiderMineYes"/>
+        <SoundArray index="Pissed" value="SpiderMinePissed"/>
+        <SoundArray index="Movement" value="SpiderMineMovement"/>
+        <SoundArray index="Turning" value="SpiderMineTurning"/>
+        <SoundArray index="Board" value="SpiderMineBoard"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Terran-SpiderMine.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-SpiderMine.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorRange id="SteadyTargeting_Tosh@Range" parent="RangeAbil" abil="SteadyTargeting_Tosh">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorModel id="Snipe_Tosh@StunModel" parent="ModelAddition">
+        <On Terms="Behavior.Snipe_Tosh@Stun.On" Send="Create"/>
+        <On Terms="Behavior.Snipe_Tosh@Stun.Off" Send="AnimBracketStop BSD"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+        <Model value="GrappleStun"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
+    <CActorAction id="Snipe_Tosh@Action" parent="GenericAttack" effectAttack="SnipeDamage">
+        <On index="0" Terms="Effect.Snipe_Tosh@Damage.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On index="5" Terms="Effect.Snipe_Tosh@Damage.Start; At Caster" Send="Create"/>
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <LaunchAssets Model="GhostSnipeAttackLaunch" Sound="Ghost_SnipeLaunch"/>
+        <Beam value="Snipe_Tosh@AttackBeam"/>
+        <ImpactMap index="None" Model="GhostSnipeAttackImpact" Sound="Ghost_SnipeImpact"/>
+        <ImpactPhysics Name="GhostSnipeImpact" MatchKeys="Basic" Physics="GhostSnipeAttackDeathForce"/>
+    </CActorAction>
+    <CActorBeamSimple id="Snipe_Tosh@AttackBeam" parent="GenericAttackBeam">
+        <Model value="GhostSnipeAttackBeam"/>
+    </CActorBeamSimple>
+    <CActorAction id="Duel_Tosh@Action" parent="GenericAttack" effectAttack="SnipeDamage">
+        <On index="0" Terms="Effect.Duel_Tosh@Damage.Stop; FromEffectTreeDescendant" Send="ActionImpactPhysics"/>
+        <On index="5" Terms="Effect.Duel_Tosh@Damage.Start; At Caster" Send="Create"/>
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <LaunchAssets Model="GhostSnipeAttackLaunch" Sound="Ghost_SnipeLaunch"/>
+        <Beam value="Duel_Tosh@AttackBeam"/>
+        <ImpactMap index="None" Model="GhostSnipeAttackImpact" Sound="Ghost_SnipeImpact"/>
+        <ImpactPhysics Name="GhostSnipeImpact" MatchKeys="Basic" Physics="GhostSnipeAttackDeathForce"/>
+    </CActorAction>
+    <CActorBeamSimple id="Duel_Tosh@AttackBeam" parent="GenericAttackBeam">
+        <Model value="GhostSnipeAttackBeam"/>
+    </CActorBeamSimple>
+    <CActorRange id="Snipe_Tosh@Range" parent="RangeAbil" abil="Snipe_Tosh">
+        <Icon value="Assets\Textures\RadarIcon2.dds"/>
+        <IconArcLength value="3.250000"/>
+    </CActorRange>
+    <CActorModel id="SteadyTargeting_Tosh@LaunchSquib" parent="ModelAnimationStyleOneShot">
+        <Flags index="SuppressCreationErrors" value="1"/>
+        <On Terms="Effect.SteadyTargeting_Tosh@Damage.Start; At Caster" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachWeapon"/>
+        <Model value="SteadyTargeting_Tosh@LaunchModel"/>
+    </CActorModel>
+    <CActorAction id="SteadyTargeting_Tosh@Action" parent="GenericAttack" effectAttack="SteadyTargeting_Tosh@Damage">
+        <LaunchSiteOps Ops="SOpAttachHarnessStationary"/>
+        <LaunchAssets Sound="Ghost_SnipeLaunch"/>
+        <Beam value="SteadyTargeting_Tosh@Beam"/>
+        <ImpactMap index="None" Sound="Ghost_SnipeImpact"/>
+    </CActorAction>
+    <CActorBeamSimple id="SteadyTargeting_Tosh@Beam" parent="BeamSimpleAnimationStyleOneShot">
+        <HostLaunch Subject="_Unit"/>
+        <HostImpactSiteOps Ops="SOpTargetUnit SOpAttachHead" HoldPosition="1" HoldRotation="1"/>
+    </CActorBeamSimple>
+    <CActorBeamSimple id="SteadyTargeting_Tosh@TrackingBeam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.SteadyTargeting_Tosh@CombatRB.Start" Send="Destroy"/>
+        <Model value="ChannelSnipeTrackingBeam"/>
+        <HostLaunch Subject="_Unit" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachWeapon"/>
+        <HostImpactSiteOps Ops="SOpTargetUnit SOpAttachHead"/>
+    </CActorBeamSimple>
+    <CActorAction id="C10CanisterRifle_Default@AttackAction" parent="GenericAttack" effectAttack="C10CanisterRifle_Default@Damage">
+        <LaunchAssets Model="C10CanisterRifle_Default@LaunchModel" Sound="Ghost_AttackLaunch"/>
+        <ContainerAssets Model="C10CanisterRifle_Default@BunkerLaunchModel" Sound="Ghost_BunkerAttackLaunch"/>
+        <ImpactMap index="None" Model="C10CanisterRifle_Default@ImpactModel" Sound="Ghost_AttackImpact"/>
+        <ImpactMap index="Flesh" ModelReaction="BloodTargetImpact"/>
+        <ImpactPhysics Name="CannisterRifleImpact" MatchKeys="Basic" Physics="GhostAttackDeathForce"/>
+        <AcquisitionYawHalfArc value="10.000000"/>
+        <AcquisitionPitchHalfArc value="15.000000"/>
+        <AccuracyHalfArc value="5.000000"/>
+    </CActorAction>
+    <CActorModel id="RailGunLaunchSquib">
+        <Model value="SteadyTargeting_Tosh@LaunchModel"/>
+    </CActorModel>
+    <CActorUnit id="ToshGhost_Default" parent="GenericUnitBase" unitName="ToshGhost_Default">
+        <Aliases value="_UnitSmall"/>
+        <On Terms="Abil.HeroNuclearStrike.SourceCastStart" Send="AnimBracketStart Spell Work,Start Work Work,End"/>
+        <On Terms="Abil.HeroNuclearStrike.SourceFinishStart" Send="AnimBracketStop Spell"/>
+        <On Terms="Abil.HeroNuclearStrike.SourceCancel" Send="AnimBracketStop Spell"/>
+        <On Terms="Abil.attack.ReadyStart" Send="AnimGroupApply Work"/>
+        <On Terms="WeaponStart.*.AttackStart" Send="AnimBracketStart Attack Attack"/>
+        <On Terms="WeaponStop.*.AttackStop" Send="AnimBracketStop Attack"/>
+        <On Terms="Abil.attack.ReadyStop" Send="AnimGroupRemove Work"/>
+        <On Terms="Abil.ToshShadowClones.SourceCastStart" Send="$Spell"/>
+        <On Terms="Abil.SteadyTargeting_Tosh.SourceCastStart" Send="AnimBaselineStop"/>
+        <On Terms="Abil.SteadyTargeting_Tosh.SourceCastStart" Send="AnimPlay SpellA Stand,Work,Start"/>
+        <On Terms="Abil.SteadyTargeting_Tosh.SourceCastStop" Send="AnimClear SpellA"/>
+        <On Terms="Abil.SteadyTargeting_Tosh.SourceCastStop" Send="AnimBaselineStart"/>
+        <On Terms="Abil.SteadyTargeting_Tosh.SourceChannelStart" Send="AnimPlay SpellB Stand,Work PlayForever"/>
+        <On Terms="Abil.SteadyTargeting_Tosh.SourceChannelStop" Send="AnimClear SpellB"/>
+        <On Terms="Effect.SteadyTargeting_Tosh@Damage.Start; At Caster" Send="AnimPlay SpellC Attack"/>
+        <On Terms="Effect.SteadyTargeting_Tosh@InitialSet.Start; At Caster" Send="Create SteadyTargeting_Tosh@TrackingBeam"/>
+        <On Terms="Abil.Snipe_Tosh.SourceCastStart" Send="AnimBracketStart Spell Work,Start Work Work,End"/>
+        <On Terms="Abil.Snipe_Tosh.SourceFinishStart" Send="AnimBracketStop Spell"/>
+        <On Terms="Abil.Snipe_Tosh.SourceFinishStart" Send="AnimPlay SpellC Attack"/>
+        <On Terms="Abil.Snipe_Tosh.SourceCancel" Send="AnimBracketStop Spell"/>
+        <On Terms="Abil.Duel_Tosh.SourceCastStart" Send="AnimBracketStart Spell Work,Start Work Work,End"/>
+        <On Terms="Abil.Duel_Tosh.SourceFinishStart" Send="AnimBracketStop Spell"/>
+        <On Terms="Abil.Duel_Tosh.SourceCancel" Send="AnimBracketStop Spell"/>
+        <On Terms="Effect.Duel_Tosh@Damage.Start; At Caster" Send="AnimPlay SpellC Attack"/>
+        <On Terms="Abil.Flashbang_Tosh.SourcePrepStart" Send="AnimPlay Toss Spell,A 0 -1.000000 -1.000000 -1.000000 AsDuration"/>
+        <On Terms="ActorCreation" Send="TextureSelectById TheDominion"/>
+        <BuildModel value="ToshTeleportIn"/>
+        <DeathArray index="Normal" ModelLink="ToshGhost_Default@Death" SoundLink="Tosh_Death"/>
+        <PortraitModel value="ToshPortrait"/>
+        <WalkAnimMoveSpeed value="3"/>
+        <BarOffset value="40"/>
+        <BarWidth value="40"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-Tosh.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\ui-heroicon-tosh.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-infantryarmorlevel0.dds"/>
+        <ShieldArmorIcon value="Assets\Textures\btn-ability-terran-defensivematrix.dds"/>
+        <SoundArray index="Ready" value="Tosh_Ready"/>
+        <SoundArray index="Help" value="Tosh_Help"/>
+        <SoundArray index="What" value="Tosh_What"/>
+        <SoundArray index="Yes" value="Tosh_Yes"/>
+        <SoundArray index="Attack" value="Tosh_Attack"/>
+        <SoundArray index="Pissed" value="Tosh_Pissed"/>
+        <UnitBorderNormalColor value="150,150,150"/>
+        <UnitBorderSubgroupColor value="255,255,255"/>
+        <UnitIcon value="Assets\Textures\BTN-Unit-Terran-Tosh.dds"/>
+        <UnitKillRank Text="UnitKillRank/Tosh_GhostDefault"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-Tosh.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorAction id="Flashbang_Tosh@Action" parent="GenericAttack" effectImpact="Flashbang_Tosh@Damage" effectLaunch="Flashbang_Tosh@LM">
+        <LaunchAttachQuery Methods="AMFilterHardpoint01" Fallback="Hardpoint"/>
+        <Missile value="Flashbang_Tosh@Missile"/>
+        <ImpactMap index="None" Sound="Ghost_EMPAttackImpact"/>
+    </CActorAction>
+    <CActorSplat id="Flashbang_Tosh@CursorSplat" parent="TerranCursorSplat" abil="Flashbang_Tosh"/>
+    <CActorMissile id="Flashbang_Tosh@Missile" parent="GenericAttackMissile" unitName="Flashbang_Tosh@Missile">
+        <Model value="Flashbang_Tosh@MissileModel"/>
+    </CActorMissile>
+    <CActorRange id="Flashbang_Tosh@Range" parent="RangeAbil" abil="Flashbang_Tosh"/>
+    <CActorSound id="ProximityMine@UnburrowSound" parent="SoundOneShot">
+        <On Terms="AbilMorph.ProximityMine@Unburrow.Start" Send="Create"/>
+        <Sound value="ProximityMine@Unburrow"/>
+    </CActorSound>
+</Catalog>

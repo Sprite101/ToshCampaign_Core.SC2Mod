@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CDataCollectionAbil id="Duel_Tosh">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+        <Button value="SteadyTargeting_Tosh"/>
+        <TechInfoAbil value="SteadyTargeting_Tosh"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="Flashbang_Tosh">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+        <Button value="SteadyTargeting_Tosh"/>
+        <TechInfoAbil value="SteadyTargeting_Tosh"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="ProximityMine">
+        <EditorCategories value=""/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="Snipe_Tosh">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+        <Button value="SteadyTargeting_Tosh"/>
+        <TechInfoAbil value="SteadyTargeting_Tosh"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="SteadyTargeting_Tosh">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="ToshGhost_Default">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="C10CanisterRifle_Default">
+        <EditorCategories value="DataGroup:Weapon,Race:Terran,DataFamily:Campaign,ObjectType:Hero"/>
+    </CDataCollectionAbil>
+</Catalog>

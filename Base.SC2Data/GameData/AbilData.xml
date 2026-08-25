@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CAbilEffectTarget id="Snipe_Tosh">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Snipe_Tosh@Set"/>
+        <Cost>
+            <Vital index="Energy" value="25"/>
+        </Cost>
+        <TargetFilters value="Visible;Self,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="8"/>
+        <CastIntroTime value="0.5"/>
+        <Marker>
+            <MatchFlags index="Link" value="0"/>
+            <MatchFlags index="CasterUnit" value="1"/>
+        </Marker>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Snipe_Tosh"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Duel_Tosh">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Duel_Tosh@CP"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <Range value="10"/>
+        <CastIntroTime value="0.5"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Duel_Tosh"/>
+        <CursorEffect value="Duel_Tosh@SearchArea"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="SteadyTargeting_Tosh">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="SteadyTargeting_Tosh@InitialSet"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <TargetFilters value="Visible;Self,Player,Ally,Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
+        <Range value="10"/>
+        <RangeSlop value="20"/>
+        <CancelableArray index="Channel" value="1"/>
+        <UninterruptibleArray index="Cast" value="1"/>
+        <UninterruptibleArray index="Channel" value="1"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="ChannelSnipe"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="Flashbang_Tosh">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="Flashbang_Tosh@LM"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Cost>
+            <Charge>
+                <CountMax value="10"/>
+                <CountStart value="3"/>
+                <CountUse value="1"/>
+                <Link value="RaynorTossGrenadeRaynorTossGrenade2RaynorTossGrenadeRaynorFlashbang_Tosh"/>
+                <Location value="Unit"/>
+            </Charge>
+        </Cost>
+        <Range value="7"/>
+        <PrepTime value="0.361"/>
+        <CursorEffect value="Flashbang_Tosh@SearchArea"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="Flashbang_Tosh" State="Restricted"/>
+    </CAbilEffectTarget>
+    <CAbilMorph id="ProximityMine@Burrow">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <ActorKey value="BurrowDown"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <InfoArray Unit="ProximityMine@Burrowed">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1.067"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <EffectArray index="Start" value="SpiderMineVulnerable"/>
+            </SectionArray>
+        </InfoArray>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Worker,Missile,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+        <AutoCastRange value="2"/>
+    </CAbilMorph>
+    <CAbilMorph id="ProximityMine@Unburrow">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <ActorKey value="BurrowUp"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <Cost>
+            <Charge Link="Abil/SpiderMineUnburrow"/>
+            <Cooldown Link="Abil/SpiderMineUnburrow"/>
+        </Cost>
+        <InfoArray Unit="SpiderMine">
+            <SectionArray index="Abils">
+                <EffectArray index="Start" value="SpiderMineBurrowInitialAdd"/>
+            </SectionArray>
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.6"/>
+                <EffectArray index="Start" value="SpiderMineInvulnerable"/>
+            </SectionArray>
+        </InfoArray>
+        <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Worker,Missile,Stasis,Dead,Hidden,Invulnerable,Benign"/>
+        <AutoCastRange value="2"/>
+        <AutoCastCountMin value="1"/>
+    </CAbilMorph>
+</Catalog>

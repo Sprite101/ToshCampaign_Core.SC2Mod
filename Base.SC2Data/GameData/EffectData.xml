@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CEffectDamage id="Duel_Tosh@Damage" parent="DU_WEAP">
+        <ValidatorArray value="noMarkers"/>
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Spell"/>
+        <Amount value="50"/>
+    </CEffectDamage>
+    <CEffectEnumArea id="Duel_Tosh@SearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray MaxCount="1" Radius="3" Effect="Duel_Tosh@Damage"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    <CEffectEnumArea id="Flashbang_Tosh@SearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="1.5" Effect="Flashbang_Tosh@SearchSet"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
+    <CEffectSet id="Flashbang_Tosh@SearchSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="Flashbang_Tosh@Damage"/>
+        <EffectArray value="Flashbang_Tosh@StunAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="Snipe_Tosh@StunAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="Snipe_Tosh@Stun"/>
+        <ValidatorArray index="0" value="IsBiological"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="Snipe_Tosh@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <AttributeBonus index="Psionic" value="25"/>
+        <ArmorReduction value="0"/>
+        <Kind value="Spell"/>
+        <Amount value="25"/>
+        <Death value="Silentkill"/>
+    </CEffectDamage>
+    <CEffectSet id="Snipe_Tosh@Set">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="Snipe_Tosh@Damage"/>
+        <EffectArray value="Snipe_Tosh@StunAB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="Duel_Tosh@CP">
+        <EditorCategories value="Race:Terran"/>
+        <Flags index="Channeled" value="1"/>
+        <PeriodCount value="6"/>
+        <PeriodicValidator value="Duel_Tosh@TargetsGE1"/>
+        <PeriodicEffectArray value="Duel_Tosh@SearchArea"/>
+        <PeriodicPeriodArray value="0.25"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="SteadyTargeting_Tosh@Kill">
+        <EditorCategories value="Race:Terran"/>
+        <Chance value="0.2"/>
+        <ImpactLocation Value="TargetUnit"/>
+        <Flags index="Kill" value="1"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="SteadyTargeting_Tosh@RefundMU">
+        <ValidatorArray value="SteadyTargeting_Tosh@CasterHasRefundBehavior"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <Change value="75"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="SteadyTargeting_Tosh@RefundAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SteadyTargeting_Tosh@Refund"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="SteadyTargeting_Tosh@RefundRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="SteadyTargeting_Tosh@Refund"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="SteadyTargeting_Tosh@RefundSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="SteadyTargeting_Tosh@RefundMU"/>
+        <EffectArray value="SteadyTargeting_Tosh@RefundRB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="SteadyTargeting_Tosh@CombatAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="SteadyTargeting_Tosh@Combat"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="SteadyTargeting_Tosh@BeamDummy">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="SteadyTargeting_Tosh@CombatRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="SteadyTargeting_Tosh@Combat"/>
+    </CEffectRemoveBehavior>
+    <CEffectCreatePersistent id="SteadyTargeting_Tosh@CP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnit"/>
+        <Flags index="Channeled" value="1"/>
+        <ExpireEffect value="SteadyTargeting_Tosh@DamageSet"/>
+        <FinalEffect value="SteadyTargeting_Tosh@CombatRB"/>
+        <PeriodCount value="32"/>
+        <PeriodicValidator value="SteadyTargeting_Tosh@Validators"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
+    <CEffectDamage id="SteadyTargeting_Tosh@Damage">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <Amount value="170"/>
+    </CEffectDamage>
+    <CEffectSet id="SteadyTargeting_Tosh@DamageSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="SteadyTargeting_Tosh@Kill"/>
+        <EffectArray value="SteadyTargeting_Tosh@Damage"/>
+        <EffectArray value="SteadyTargeting_Tosh@RefundRB"/>
+        <EffectArray value="SteadyTargeting_Tosh@CombatRB"/>
+    </CEffectSet>
+    <CEffectSet id="SteadyTargeting_Tosh@InitialSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="SteadyTargeting_Tosh@CP"/>
+        <EffectArray value="SteadyTargeting_Tosh@CombatAB"/>
+        <EffectArray value="SteadyTargeting_Tosh@RefundAB"/>
+        <EffectArray value="SteadyTargeting_Tosh@BeamDummy"/>
+    </CEffectSet>
+    <CEffectDamage id="C10CanisterRifle_Default@Damage" parent="DU_WEAP">
+        <EditorCategories value="Race:Terran"/>
+        <Kind value="Ranged"/>
+        <Amount value="20"/>
+    </CEffectDamage>
+    <CEffectDamage id="Flashbang_Tosh@Damage">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Amount value="5"/>
+        <SearchFilters value="-;Self,Player,Ally,Air,Missile,Stasis,Dead,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="Flashbang_Tosh@LM">
+        <ValidatorArray index="0" value="HasVision"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="Flashbang_Tosh@SearchArea"/>
+        <AmmoUnit value="Flashbang_Tosh@Missile"/>
+    </CEffectLaunchMissile>
+    <CEffectApplyBehavior id="Flashbang_Tosh@StunAB">
+        <ValidatorArray index="0" value="IsBiological"/>
+        <ValidatorArray value="NotMassive"/>
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="Flashbang_Tosh@Stun"/>
+    </CEffectApplyBehavior>
+</Catalog>

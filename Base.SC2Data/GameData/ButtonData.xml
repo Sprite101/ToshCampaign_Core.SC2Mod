@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Catalog>
+    <CButton id="Snipe_Tosh">
+        <Icon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="Duel_Tosh">
+        <Icon value="Assets\Textures\ui_tipicon_campaign_exp02-focusfire.dds"/>
+        <AlertIcon value="Assets\Textures\ui_tipicon_campaign_exp02-focusfire.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="SteadyTargeting_Tosh">
+        <Icon value="Assets\Textures\btn-ability-terran-snipe.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-snipe.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HidesForSimpleText value="0"/>
+        <TintRacially value="1"/>
+    </CButton>
+    <CButton id="Flashbang_Tosh">
+        <Icon value="Assets\Textures\btn-upgrade-nova-flashgrenade.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-nova-flashgrenade.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+</Catalog>
