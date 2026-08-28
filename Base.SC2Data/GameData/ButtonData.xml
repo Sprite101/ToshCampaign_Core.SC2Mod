@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CButton id="HackIn_Tosh">
+        <Icon value="Assets\Textures\btn-tips-hacking.dds"/>
+        <AlertIcon value="Assets\Textures\btn-tips-hacking.dds"/>
+        <EditorCategories value="Race:Terran"/>
+        <HidesForSimpleText value="0"/>
+    </CButton>
     <CButton id="Snipe_Tosh">
         <Icon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
@@ -23,5 +29,6 @@
         <Icon value="Assets\Textures\btn-upgrade-nova-flashgrenade.dds"/>
         <AlertIcon value="Assets\Textures\btn-upgrade-nova-flashgrenade.dds"/>
         <EditorCategories value="Race:Terran"/>
+        <HidesForSimpleText value="0"/>
     </CButton>
 </Catalog>

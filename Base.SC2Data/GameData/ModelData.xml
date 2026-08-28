@@ -1,15 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CModel id="GasTurret@HallucinationBirthModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Other\Void_UnitSpawn_Impact\Void_UnitSpawn_Impact.m3"/>
+        <ScaleMax value="0.750000,0.750000,0.750000"/>
+        <ScaleMin value="0.750000,0.750000,0.750000"/>
+    </CModel>
+    <CModel id="GasTurret" parent="Building" Race="Terran">
+        <Model value="Assets\Units\Terran\UmojanLabGasTurret\UmojanLabGasTurret.m3"/>
+        <Events>
+            <Anim value="Stand,Work,Start,00"/>
+            <Name value="Doodad_UmojanLabGasTurret_StandWorkStart"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Doodad_UmojanLabGasTurret_StandWorkStart"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,Work,End,00"/>
+            <Name value="Doodad_UmojanLabGasTurret_StandWorkEnd"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Doodad_UmojanLabGasTurret_StandWorkEnd"/>
+        </Events>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraMid05"/>
+        <Radius value="0.750000"/>
+        <ScaleMax value="0.800000,0.800000,0.800000"/>
+        <ScaleMin value="0.800000,0.800000,0.800000"/>
+        <SelectionLayer value="2"/>
+        <SelectionRadius value="0.937500"/>
+        <ShadowRadius value="0.937500"/>
+        <TechPurchaseCamera value="Star2CameraMid05"/>
+        <UnitGlossaryCamera value="Star2CameraMid05"/>
+    </CModel>
+    <CModel id="GasTurret@Death" parent="BuildingDeath" Race="Terran">
+        <Model value="Assets\Units\Terran\UmojanLabGasTurretDeath\UmojanLabGasTurretDeath.m3"/>
+        <LowQualityModel value="TerranBuildingDeathLow"/>
+    </CModel>
+    <CModel id="GasTurret@HallucinationDeathModel" parent="OneShotSpellFX">
+        <Model value="Assets\Units\Neutral\VoidUnit_Death\VoidUnit_Death.m3"/>
+    </CModel>
+    <CModel id="GasTurret@HallucinationGlaze" parent="Glaze">
+        <Model value="Assets\Effects\Glaze\Glaze_Corrupted_TangentSpace\Glaze_Corrupted_TangentSpace.m3"/>
+        <Priority value="32"/>
+    </CModel>
+    <CModel id="ProximityMine@Indicator" parent="RacePersistentSpellFX" Race="Terran">
+        <Model value="Assets\UI\Cursors\DropPodCursor\DropPodCursor.m3"/>
+    </CModel>
     <CModel id="ProximityMine" parent="Unit" Race="Terran">
         <Model value="Assets\Units\Terran\SpiderMine\SpiderMine.m3"/>
         <Occlusion value="Show"/>
         <PlanetPanelCamera value="Star2CameraLow02"/>
-        <Radius value="0.250000"/>
+        <Radius value="0.375000"/>
         <SelectionLayer value="3"/>
-        <SelectionRadius value="0.250000"/>
-        <ShadowRadius value="0.250000"/>
+        <SelectionRadius value="0.375000"/>
+        <ShadowRadius value="0.375000"/>
         <TechPurchaseCamera value="Star2CameraLow02"/>
         <UnitGlossaryCamera value="Star2CameraLow02"/>
+        <ScaleMax value="1.500000,1.500000,1.500000"/>
+        <ScaleMin value="1.500000,1.500000,1.500000"/>
     </CModel>
     <CModel id="ProximityMine@Explosion" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Terran\TerranSmallUnitDeath\TerranSmallUnitDeath.m3"/>
@@ -20,6 +68,40 @@
         <ScaleMin value="0.250000,0.250000,0.250000"/>
         <SelectionRadius value="2.000000"/>
         <ShadowRadius value="2.000000"/>
+    </CModel>
+    <CModel id="ProximityMine@ImpactEffect" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\TerranLargeUnitDeath\TerranLargeUnitDeath.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="HackIn_Tosh@CastModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Karax_Reclamation_Cast\Karax_Reclamation_Cast.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+    </CModel>
+    <CModel id="HackIn_Tosh@ImpactModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Karax_Reclamation\Karax_Reclamation.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Birth,00"/>
+            <Name value="ReclamationImpactSound"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="ReclamationImpactSound"/>
+        </Events>
+    </CModel>
+    <CModel id="HackIn_Tosh@ImpactLargeModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Karax_Reclamation_Large\Karax_Reclamation_Large.m3"/>
+        <EditorCategories value="Race:Protoss"/>
+        <Events>
+            <Anim value="Birth,00"/>
+            <Name value="ReclamationImpactSound"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="ReclamationImpactSound"/>
+        </Events>
+    </CModel>
+    <CModel id="HackIn_Tosh@IndicatorModel" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Karax_Reclamation_State\Karax_Reclamation_State.m3"/>
+        <EditorCategories value="Race:Protoss"/>
     </CModel>
     <CModel id="SteadyTargeting_Tosh@Beam" parent="PersistentSpellFX">
         <Model value="Assets\Effects\Terran\GhostSnipeBeam\GhostSnipeBeam.m3"/>

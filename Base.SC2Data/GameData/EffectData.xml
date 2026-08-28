@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectCreatePersistent id="GasTurret@CreateHallucinationRandomCP">
+        <EditorCategories value="Race:Terran"/>
+        <Flags index="RandomOffset" value="1"/>
+        <Flags index="RandomPeriod" value="1"/>
+        <PeriodCount value="1"/>
+        <PeriodicEffectArray value="GasTurret@CreateSet"/>
+        <PeriodicOffsetArray value="2,0,0"/>
+        <PeriodicOffsetArray value="-2,0,0"/>
+        <PeriodicOffsetArray value="0,-2,0"/>
+        <PeriodicOffsetArray value="0,2,0"/>
+        <PeriodicOffsetArray value="1,0,0"/>
+        <PeriodicOffsetArray value="-1,0,0"/>
+        <PeriodicOffsetArray value="0,-1,0"/>
+        <PeriodicOffsetArray value="0,1,0"/>
+        <PeriodicPeriodArray value="0"/>
+        <ValidatorArray value="GasTurret@TargetIsNeuralGased"/>
+    </CEffectCreatePersistent>
     <CEffectDamage id="Duel_Tosh@Damage" parent="DU_WEAP">
         <ValidatorArray value="noMarkers"/>
         <EditorCategories value="Race:Terran"/>
@@ -12,16 +29,141 @@
         <AreaArray MaxCount="1" Radius="3" Effect="Duel_Tosh@Damage"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="GasTurret@AB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="GasTurret@NeuralGas"/>
+    </CEffectApplyBehavior>
+    <CEffectCreateUnit id="GasTurret@CreateHallucinationGhost">
+        <EditorCategories value="Race:Terran"/>
+        <Chance value="0.5"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="GasTurret@HallucinationCreateSet"/>
+        <SpawnUnit value="Ghost"/>
+        <WhichLocation Value="SourceUnitOrPoint"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="GasTurret@CreateSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="GasTurret@CreateHallucinationMarine"/>
+        <EffectArray value="GasTurret@CreateHallucinationGhost"/>
+        <TargetLocationType value="UnitOrPoint"/>
+    </CEffectSet>
+    <CEffectEnumArea id="GasTurret@SearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Invulnerable"/>
+        <AreaArray Radius="10" Effect="GasTurret@AB"/>
+    </CEffectEnumArea>
+    <CEffectCreateUnit id="GasTurret@CreateHallucinationMarine">
+        <EditorCategories value="Race:Terran"/>
+        <CreateFlags index="ProvideFood" value="0"/>
+        <CreateFlags index="TechComplete" value="0"/>
+        <CreateFlags index="UseFood" value="0"/>
+        <SpawnEffect value="GasTurret@HallucinationCreateSet"/>
+        <SpawnUnit value="Marine"/>
+        <WhichLocation Value="SourceUnitOrPoint"/>
+    </CEffectCreateUnit>
+    <CEffectSet id="GasTurret@HallucinationCreateSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="GasTurret@HallucinationAB"/>
+        <EffectArray value="GasTurret@HallucinationTimedLifeAB"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="GasTurret@HallucinationAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="GasTurret@Hallucination"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="GasTurret@HallucinationTimedLifeAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="GasTurret@TimedLife"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="GasTurret@HallucinationKill">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Flags index="Kill" value="1"/>
+        <Flags index="Notification" value="1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectDamage id="ProximityMine@Damage">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Amount value="150"/>
+        <SearchFilters value="-;Self,Player,Ally,Air,Missile,Stasis,Dead,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectDamage>
     <CEffectEnumArea id="Flashbang_Tosh@SearchArea">
         <EditorCategories value="Race:Terran"/>
         <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="1.5" Effect="Flashbang_Tosh@SearchSet"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
+    <CEffectEnumArea id="ProximityMine@SearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="ProximityMine@SearchSet"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
     <CEffectSet id="Flashbang_Tosh@SearchSet">
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="Flashbang_Tosh@Damage"/>
         <EffectArray value="Flashbang_Tosh@StunAB"/>
+    </CEffectSet>
+    <CEffectCreatePersistent id="ProximityMine@Dummy">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="CasterPoint"/>
+        <PeriodCount value="1"/>
+        <PeriodicPeriodArray value="1"/>
+    </CEffectCreatePersistent>
+    <CEffectSet id="ProximityMine@SearchSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ProximityMine@Damage"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="ProximityMine@InitialAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ProximityMine@Initial"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="ProximityMine@FinalAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="ProximityMine@Suicide"/>
+    </CEffectApplyBehavior>
+    <CEffectSet id="ProximityMine@InitialSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="ProximityMine@InitialAB"/>
+        <EffectArray value="ProximityMine@Dummy"/>
+    </CEffectSet>
+    <CEffectSet id="ProximityMine@SuicideSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="SuicideRemove"/>
+        <EffectArray value="ProximityMine@SearchArea"/>
+    </CEffectSet>
+    <CEffectApplyBehavior id="HackIn_Tosh@AB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="HackIn_Tosh"/>
+    </CEffectApplyBehavior>
+    <CEffectCreatePersistent id="HackIn_Tosh@CP">
+        <EditorCategories value="Race:Terran"/>
+        <WhichLocation Value="TargetUnit"/>
+        <InitialDelay value="0.4"/>
+        <FinalEffect value="HackIn_Tosh@MU"/>
+    </CEffectCreatePersistent>
+    <CEffectModifyUnit id="HackIn_Tosh@MU">
+        <EditorCategories value="Race:Terran"/>
+        <ModifyFlags index="Owner" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectSet id="HackIn_Tosh@Set">
+        <ValidatorArray value="noMarkers"/>
+        <ValidatorArray value="NotWarpingIn"/>
+        <ValidatorArray value="NotFrenzied"/>
+        <ValidatorArray value="HasNoCargo"/>
+        <ValidatorArray value="NotPointDefenseDrone"/>
+        <ValidatorArray value="UnitIsNotBiological"/>
+        <ValidatorArray value="HackIn_Tosh@Targets"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="HackIn_Tosh@CP"/>
+        <EffectArray value="HackIn_Tosh@AB"/>
     </CEffectSet>
     <CEffectApplyBehavior id="Snipe_Tosh@StunAB">
         <EditorCategories value="Race:Terran"/>

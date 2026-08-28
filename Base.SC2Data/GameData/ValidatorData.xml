@@ -7,6 +7,46 @@
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
         <SearchFilters value="Ground,Biological,Visible;Player,Ally,Neutral,Worker,Missile,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="GasTurret@CasterIsNeuralGased">
+        <WhichUnit Value="Caster"/>
+        <Value value="1"/>
+        <Behavior value="GasTurret@NeuralGas"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GasTurret@TargetNotNeuralGased">
+        <Behavior value="GasTurret@NeuralGas"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="HackIn_Tosh@Targets">
+        <CombineArray value="Modified@IsUmojanLabMicrobot"/>
+        <CombineArray value="Modified@IsGunTurretCombined"/>
+        <CombineArray value="ProximityMine@IsProximityMineCombined"/>
+    </CValidatorCombine>
+    <CValidatorUnitCompareBehaviorCount id="GasTurret@HasHallucination">
+        <Value value="1"/>
+        <Behavior value="GasTurret@Hallucination"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitType id="Modified@IsUmojanLabMicrobot">
+        <Value value="UmojanLabMicrobot"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="ProximityMine@IsProximityMine">
+        <Value value="ProximityMine"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="ProximityMine@IsProximityMineBurrowed">
+        <Value value="ProximityMine@Burrowed"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="Modified@IsGunTurret">
+        <Value value="GunTurret"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="Modified@IsGunTurretUnderground">
+        <Value value="GunTurretUnderground"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="ProximityMine@IsProximityMineCombined">
+        <CombineArray value="ProximityMine@IsProximityMine"/>
+        <CombineArray value="ProximityMine@IsProximityMineBurrowed"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="Modified@IsGunTurretCombined">
+        <CombineArray value="Modified@IsGunTurret"/>
+        <CombineArray value="Modified@IsGunTurretUnderground"/>
+    </CValidatorCombine>
     <CValidatorCombine id="SteadyTargeting_Tosh@Validators">
         <Type value="And"/>
         <CombineArray value="SteadyTargeting_Tosh@CasterHasCombatBehavior"/>
@@ -30,4 +70,17 @@
     <CValidatorUnitFilters id="SteadyTargeting_Tosh@TargetFilters">
         <Filters value="Visible;Structure,Destructible,Stasis,Dead,Hidden,Invulnerable"/>
     </CValidatorUnitFilters>
+    <CValidatorLocationEnumArea id="GasTurret@HallucinationHasHauntedUnitsNearby">
+        <AreaArray>
+            <Compare value="GE"/>
+            <Count value="1"/>
+            <Radius value="4.5"/>
+            <Validator value="GasTurret@TargetIsNeuralGased"/>
+        </AreaArray>
+        <SearchFilters value="-;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+    </CValidatorLocationEnumArea>
+    <CValidatorUnitCompareBehaviorCount id="GasTurret@TargetIsNeuralGased">
+        <Value value="1"/>
+        <Behavior value="GasTurret@NeuralGas"/>
+    </CValidatorUnitCompareBehaviorCount>
 </Catalog>

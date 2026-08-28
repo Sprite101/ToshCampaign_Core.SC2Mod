@@ -1,10 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CActorModel id="GasTurret@HallucinationBirthModel" parent="ModelAnimationStyleOneShot">
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Opacity" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <On Terms="ActorCreation" Send="SetTintColor {255,255,255 2.000000}"/>
+        <On Terms="Behavior.GasTurret@Hallucination.On" Send="Create"/>
+        <Host Subject="_Selectable"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <AutoScaleFactor value="1.000000"/>
+    </CActorModel>
     <CActorSplat id="Duel_Tosh@CursorSplat" parent="TerranCursorSplat" abil="Duel_Tosh"/>
     <CActorRange id="Duel_Tosh@Range" parent="RangeAbil" abil="Duel_Tosh">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
     </CActorRange>
+    <CActorUnit id="GasTurret" parent="TerranBuilding" unitName="GasTurret@Burrowed">
+        <Aliases value="_UnitLarge"/>
+        <On Terms="UnitBirth.GasTurret" Send="Create"/>
+        <On Terms="UnitBirth.GasTurret" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End ClosingFull,OpeningPlayForever,Instant"/>
+        <On Terms="AbilMorph.*.Start; MorphTo GasTurret" Send="AnimBracketStart Work Stand,Work,Start Stand,Work Stand,Work,End ClosingFull,OpeningPlayForever"/>
+        <On Terms="AbilMorph.*.Finish; MorphTo GasTurret" Send="Create Doodad_UmojanLabGasTurret_StandWork"/>
+        <On Terms="AbilMorph.*.Start; MorphTo GasTurret@Burrowed" Target="Doodad_UmojanLabGasTurret_StandWork" Send="Destroy"/>
+        <On Terms="AbilMorph.*.Start; MorphTo GasTurret@Burrowed" Send="AnimBracketStop Work"/>
+        <On Terms="ActorCreation" Send="AnimBracketStart GL_BSD_B GLbirth,B GLstand,B GLdeath,B"/>
+        <On Terms="AbilMorph.*.Start; MorphTo GasTurret" Send="Create LabTurretPoisonGasCloud"/>
+        <On Terms="AbilMorph.*.Start; MorphTo GasTurret@Burrowed" Target="LabTurretPoisonGasCloud" Send="Destroy"/>
+        <Model value="GasTurret"/>
+        <CreepHeightClass value="Small"/>
+        <BuildModel value="GasTurret"/>
+        <DeathArray index="Normal" ModelLink="GasTurret@Death" SoundLink="PerditionTurret_Explode"/>
+        <DeathArray index="UnderConstruction" ModelLink="TerranBuildingDeath" SoundLink="PerditionTurret_Explode"/>
+        <DeathCustoms ModelLink="TerranBuildingDeath" SoundLink="Terran_ExplosionMedium" Name="Burrowed"/>
+        <PlacementModel value="PerditionTurretPlacement"/>
+        <PlacementSound value="Terran_BuildingPlacement"/>
+        <PortraitModel value="AdjutantPortrait"/>
+        <BarOffset value="75"/>
+        <BarWidth value="85"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        <HighlightTooltip value="Unit/Name/GasTurret"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-buildingarmor.dds"/>
+        <SoundArray index="Construction" value="Terran_ConstructionWhat"/>
+        <UnitIcon value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Terran-LabGasTurret.dds"/>
+        </Wireframe>
+    </CActorUnit>
+    <CActorModel id="GasTurret@HallucinationDeathModelSmall">
+        <Model value="GasTurret@HallucinationDeathModel"/>
+        <ModelFlags index="UseSyncSeed" value="1"/>
+        <Host Subject="::Creator"/>
+        <Inherits index="BaseModelScale" value="1"/>
+        <Inherits index="Scale" value="1"/>
+        <Inherits index="TintColor" value="1"/>
+        <Inherits index="Visibility" value="1"/>
+        <Aliases value="_DeathModel"/>
+        <On Terms="ActorCreation" Send="RefClear ::Host"/>
+        <On Terms="ActorCreation" Send="Create GasTurret@HallucinationDeathSound"/>
+        <On Terms="ActorCreation" Send="$Death"/>
+        <On Terms="AnimDone; AnimName Death" Send="Destroy"/>
+    </CActorModel>
+    <CActorModelMaterial id="GasTurret@HallucinationGlaze" parent="GlazeParent">
+        <On Terms="Behavior.GasTurret@Hallucination.On" Send="Create"/>
+        <On Terms="Behavior.GasTurret@Hallucination.Off" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
+        <ModelFlags index="AutomateGlobalLoops" value="1"/>
+    </CActorModelMaterial>
+    <CActorUnit id="Marine">
+        <On Terms="UnitDeathCustomize; PassChance 100.000000; ValidateUnit GasTurret@HasHallucination" Send="Create GasTurret@HallucinationDeathModelSmall"/>
+        <On Terms="UnitDeath.Marine; ValidateUnit GasTurret@HasHallucination" Send="Destroy"/>
+    </CActorUnit>
+    <CActorUnit id="Ghost">
+        <On Terms="UnitDeathCustomize; ValidateUnit GasTurret@HasHallucination" Send="DeathCustomize Shadow"/>
+    </CActorUnit>
+    <CActorModel id="ProximityMine@Indicator" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.ProximityMine@Dummy.Start" Send="Create"/>
+        <On Terms="Effect.ProximityMine@Dummy.Stop" Send="Destroy"/>
+        <Aliases value="_Scalable"/>
+        <FogVisibility value="Visible"/>
+        <HostSiteOps Ops="SOpShadow"/>
+        <AcceptedTransfers index="Rotation" value="0"/>
+        <Scale value="0.400000"/>
+    </CActorModel>
+    <CActorModel id="ProximityMine@ImpactEffect" parent="ModelAnimationStyleOneShot">
+        <On index="0" Terms="ActorCreation" Send="$Death"/>
+        <On index="1" Terms="AnimDone; AnimName Stand" Send="Destroy"/>
+        <On index="2" Terms="ActorOrphan" Send="Destroy"/>
+        <On Terms="Effect.ProximityMine@SearchArea.Start" Send="Create"/>
+        <On Terms="Effect.ProximityMine@SearchArea.Stop" Send="AnimBracketStop BSD"/>
+        <AcceptedHostedPropTransfers index="BaseModelScale" value="0"/>
+    </CActorModel>
     <CActorSound id="Flashbang_Tosh@LaunchSound" parent="SoundOneShot">
         <On Terms="Effect.Flashbang_Tosh@LM.Start" Send="Create"/>
         <Sound value="Raynor_TossGrenadeLaunch"/>
@@ -42,7 +131,10 @@
         <On Terms="AbilMorph.*.Start; MorphTo ProximityMine" Send="AnimClear Burrow"/>
         <On Terms="AbilMorph.*.Start; MorphTo ProximityMine" Send="AnimPlay Unburrow Unburrow"/>
         <On Terms="AbilMorph.ProximityMine@Burrow.Start" Send="Create VultureSpiderMineBurrowSound"/>
-        <On Terms="Abil.attack.ReadyStart" Send="Create VultureSpiderMineSeekSound"/>
+        <On Terms="Behavior.ProximityMine@Suicide.On" Send="Create VultureSpiderMineSeekSound"/>
+        <On Terms="Behavior.ProximityMine@Suicide.On" Send="HostSiteOpsSet ::Host ProximityMine@SuicideRotator"/>
+        <On Terms="Behavior.ProximityMine@Suicide.On" Send="AnimPlay Activate Walk PlayForever"/>
+        <On Terms="Behavior.ProximityMine@Suicide.Off" Send="HostSiteOpsSet ::Host"/>
         <DeathArray index="Normal" ModelLink="ProximityMine@Explosion" SoundLink="Terran_ExplosionSmall"/>
         <PlacementModel value="SpiderMinePlacement"/>
         <PortraitModel value="AdjutantPortrait"/>
@@ -77,6 +169,38 @@
             <Image value="Assets\Textures\Wireframe-Terran-SpiderMine.dds"/>
         </Wireframe>
     </CActorUnit>
+    <CActorSound id="ProximityMine@ImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.ProximityMine@SearchArea.Start" Send="Create"/>
+    </CActorSound>
+    <CActorModel id="HackIn_Tosh@CastModel" parent="ModelAddition">
+        <On Terms="ActorCreation" Send="AnimBracketStart BSD Birth Stand Death ContentPlayOnce"/>
+        <On Terms="AnimBracketState.*.AfterClosing; AnimName BSD" Send="Destroy"/>
+        <On Terms="ActorOrphan" Send="AnimBracketStop BSD"/>
+        <On Terms="Abil.HackIn_Tosh.SourceCastStart" Send="Create"/>
+        <HostSiteOps Ops="SOpAttachWeapon01"/>
+    </CActorModel>
+    <CActorModel id="HackIn_Tosh@ImpactModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.HackIn_Tosh@CP.Start; At Target; ValidateUnitType IsNotColossi" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorModel id="HackIn_Tosh@ImpactLargeModel" parent="ModelAnimationStyleOneShot">
+        <On Terms="Effect.HackIn_Tosh@CP.Start; At Target; ValidateUnitType IsColossi" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+    </CActorModel>
+    <CActorRange id="HackIn_Tosh@Range" parent="RangeAbil" abil="HackIn_Tosh"/>
+    <CActorModel id="HackIn_Tosh@IndicatorModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.HackIn_Tosh@MU.Start; At Target" Send="Create"/>
+        <Host Subject="_Unit"/>
+        <HostSiteOps Ops="SOpAttachOverhead"/>
+    </CActorModel>
+    <CActorSound id="HackIn_Tosh@CastSound" parent="SoundOneShot">
+        <On Terms="Abil.HackIn_Tosh.SourceCastStart" Send="Create"/>
+    </CActorSound>
+    <CActorSound id="GasTurret@HallucinationDeathSound" parent="SoundOneShot">
+        <Sound value="ShadowUnit_DeathFX"/>
+    </CActorSound>
     <CActorRange id="SteadyTargeting_Tosh@Range" parent="RangeAbil" abil="SteadyTargeting_Tosh">
         <Icon value="Assets\Textures\RadarIcon2.dds"/>
         <IconArcLength value="3.250000"/>
@@ -220,5 +344,14 @@
     <CActorSound id="ProximityMine@UnburrowSound" parent="SoundOneShot">
         <On Terms="AbilMorph.ProximityMine@Unburrow.Start" Send="Create"/>
         <Sound value="ProximityMine@Unburrow"/>
+    </CActorSound>
+    <CActorSiteOpRotator id="ProximityMine@SuicideRotator">
+        <LocalAxis value="0.000000,0.000000,1.000000"/>
+        <Rate value="1000.000000"/>
+    </CActorSiteOpRotator>
+    <CActorSound id="ProximityMine@TriggerSound" parent="SoundOneShot">
+        <Inherits index="CloakEffect" value="1"/>
+        <On Terms="Behavior.ProximityMine@Suicide.On" Send="Create"/>
+        <Host Subject="_Unit"/>
     </CActorSound>
 </Catalog>

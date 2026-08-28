@@ -1,5 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CAbilMorph id="GasTurret@Burrow">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BurrowDown">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <ActorKey value="BurrowDown"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <InfoArray Unit="GasTurret@Burrowed">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="1"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Delay" value="1"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilMorph id="GasTurret@Unburrow">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="BurrowUp">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+        <ActorKey value="BurrowUp"/>
+        <Flags index="IgnoreFacing" value="1"/>
+        <Flags index="MoveBlockers" value="1"/>
+        <Flags index="SuppressMovement" value="1"/>
+        <InfoArray Unit="GasTurret" CollideRange="0">
+            <SectionArray index="Actor">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+            <SectionArray index="Mover">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+            <SectionArray index="Stats">
+                <DurationArray index="Duration" value="0.6"/>
+            </SectionArray>
+        </InfoArray>
+    </CAbilMorph>
+    <CAbilEffectInstant id="ProximityMine@Activate">
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <Effect index="0" value="ProximityMine@InitialSet"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <AutoCastRange value="1.5"/>
+    </CAbilEffectInstant>
+    <CAbilEffectTarget id="HackIn_Tosh">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HackIn_Tosh@Set"/>
+        <Flags index="AbortOnAllianceChange" value="0"/>
+        <Cost>
+            <Vital index="Energy" value="50"/>
+            <Cooldown TimeUse="30"/>
+        </Cost>
+        <TargetFilters value="Visible;Player,Ally,Robotic,Heroic,Missile,Stasis,Dead,Invulnerable"/>
+        <Range value="7"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HackIn_Tosh"/>
+        <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
+        <PrepTime value="1"/>
+    </CAbilEffectTarget>
     <CAbilEffectTarget id="Snipe_Tosh">
         <Alignment value="Negative"/>
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -74,9 +140,6 @@
             <SectionArray index="Mover">
                 <DurationArray index="Duration" value="1"/>
             </SectionArray>
-            <SectionArray index="Stats">
-                <EffectArray index="Start" value="SpiderMineVulnerable"/>
-            </SectionArray>
         </InfoArray>
         <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Worker,Missile,Stasis,Dead,Hidden,Invulnerable,Benign"/>
         <AutoCastRange value="2"/>
@@ -92,23 +155,19 @@
             <Charge Link="Abil/SpiderMineUnburrow"/>
             <Cooldown Link="Abil/SpiderMineUnburrow"/>
         </Cost>
-        <InfoArray Unit="SpiderMine">
-            <SectionArray index="Abils">
-                <EffectArray index="Start" value="SpiderMineBurrowInitialAdd"/>
-            </SectionArray>
+        <InfoArray Unit="ProximityMine">
             <SectionArray index="Actor">
-                <DurationArray index="Duration" value="0.6"/>
+                <DurationArray index="Duration" value="0.2"/>
             </SectionArray>
             <SectionArray index="Mover">
-                <DurationArray index="Duration" value="0.6"/>
+                <DurationArray index="Duration" value="0.2"/>
             </SectionArray>
             <SectionArray index="Stats">
-                <DurationArray index="Duration" value="0.6"/>
-                <EffectArray index="Start" value="SpiderMineInvulnerable"/>
+                <DurationArray index="Duration" value="0.2"/>
             </SectionArray>
         </InfoArray>
         <AutoCastFilters value="Ground,Visible;Player,Ally,Neutral,Structure,Worker,Missile,Stasis,Dead,Hidden,Invulnerable,Benign"/>
-        <AutoCastRange value="2"/>
+        <AutoCastRange value="1.5"/>
         <AutoCastCountMin value="1"/>
     </CAbilMorph>
 </Catalog>

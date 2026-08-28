@@ -10,8 +10,19 @@
         <Button value="SteadyTargeting_Tosh"/>
         <TechInfoAbil value="SteadyTargeting_Tosh"/>
     </CDataCollectionAbil>
-    <CDataCollectionAbil id="ProximityMine">
+    <CDataCollectionAbil id="GasTurret">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="HackIn_Tosh">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+        <Button value="SteadyTargeting_Tosh"/>
+        <TechInfoAbil value="SteadyTargeting_Tosh"/>
+    </CDataCollectionAbil>
+    <CDataCollectionUnit id="Modified">
         <EditorCategories value=""/>
+    </CDataCollectionUnit>
+    <CDataCollectionAbil id="ProximityMine">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
     </CDataCollectionAbil>
     <CDataCollectionAbil id="Snipe_Tosh">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>

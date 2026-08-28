@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CSound id="Artifact_EnergyNova2" parent="Spell">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Uni\Units\Artifact\Artifact_EnergyNovaLaunch0.wav"/>
+        <Spread value="180.000000"/>
+    </CSound>
     <CSound id="ProximityMine@Unburrow" parent="Combat">
         <EditorCategories value="Race:Terran"/>
         <AssetArray File="Assets\Sounds\Terran\Vulture\Vulture_SpiderMinePlace0.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Vulture\Vulture_SpiderMinePlace1.wav"/>
         <AssetArray File="Assets\Sounds\Terran\Vulture\Vulture_SpiderMinePlace2.wav"/>
+    </CSound>
+    <CSound id="ProximityMine@ImpactSound" parent="Terran_ExplosionMedium">
+        <AssetArray index="0" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium0.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="1" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium1.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="2" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium2.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="3" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium3.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="4" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium4.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="5" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium5.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="6" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium6.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="7" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium7.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="8" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium8.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray index="9" File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium9.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <Pitch value="0.000000,0.000000"/>
+        <DupeMuteCount value="10"/>
+        <Volume value="0.000000,0.000000"/>
+    </CSound>
+    <CSound id="ProximityMine@TriggerSound" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\WidowMine_Pulse.wav" FacialGroup=""/>
+        <Chance value="25"/>
+        <DupeDestroyCount value="5"/>
+        <DupeHistoryCount value="3"/>
+        <DupeMuteCount value="1"/>
+        <Pitch value="-2.100000,-2.000000"/>
+        <Volume value="-8.000000,-8.000000"/>
+    </CSound>
+    <CSound id="HackIn_Tosh@CastSound" parent="Ambience_Object">
+        <EditorCategories value="Race:Neutral"/>
+        <AssetArray File="Assets\Sounds\Karax_ReclamCast_01.wav" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Karax_ReclamCast_02.wav" FacialGroup=""/>
+        <Pitch value="0.000000,1.000000"/>
     </CSound>
 </Catalog>
