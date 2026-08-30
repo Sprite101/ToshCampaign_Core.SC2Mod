@@ -70,12 +70,39 @@
         <On Terms="ActorCreation" Send="ModelMaterialApplyTo ::Main"/>
         <ModelFlags index="AutomateGlobalLoops" value="1"/>
     </CActorModelMaterial>
+    <!-- Removing the normal creation to make silent kills more silent, created in the actor instead -->
+    <CActorSound id="Ghost_Death">
+        <On index="1" removed="1"/>
+    </CActorSound>
+    <CActorModel id="GasTurret@GasCloudModel" parent="ModelAddition">
+        <InheritType value="OneShot"/>
+        <Inherits index="Visibility" value="0"/>
+        <On Terms="ActorCreation" Send="SetOpacity"/>
+        <On Terms="ActorCreation" Send="SetOpacity 1.000000 3.000000"/>
+        <HostSiteOps Ops="SOpAttachCenter"/>
+        <Model value="LabTurretPoisonGasCloud"/>
+        <ModelFlags index="AllowHitTest" value="0"/>
+        <CreepHeightClass value="Small"/>
+    </CActorModel>
     <CActorUnit id="Marine">
-        <On Terms="UnitDeathCustomize; PassChance 100.000000; ValidateUnit GasTurret@HasHallucination" Send="Create GasTurret@HallucinationDeathModelSmall"/>
-        <On Terms="UnitDeath.Marine; ValidateUnit GasTurret@HasHallucination" Send="Destroy"/>
+        <On index="82" Terms="UnitDeathCustomize; PassChance 100.000000; ValidateUnit Modified@MarineDeathSoundValidators"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit GasTurret@HasHallucination" Send="DeathCustomize Hallucination"/>
+        <DeathCustoms>
+            <ModelLink value="GasTurret@HallucinationDeathModel"/>
+            <SoundLink value="Sentry_HallucinationDeathSmall"/>
+            <VoiceLink value="ShadowUnit_Small_DeathVox"/>
+            <Name value="Hallucination"/>
+        </DeathCustoms>
     </CActorUnit>
     <CActorUnit id="Ghost">
-        <On Terms="UnitDeathCustomize; ValidateUnit GasTurret@HasHallucination" Send="DeathCustomize Shadow"/>
+        <On index="129" Terms="UnitDeathCustomize; !Death Silentkill; ValidateUnit Modified@MarineDeathSoundValidators"/>
+        <On Terms="UnitDeathCustomize; ValidateUnit GasTurret@HasHallucination" Send="DeathCustomize Hallucination"/>
+        <DeathCustoms>
+            <ModelLink value="GasTurret@HallucinationDeathModel"/>
+            <SoundLink value="Sentry_HallucinationDeathSmall"/>
+            <VoiceLink value="ShadowUnit_Small_DeathVox"/>
+            <Name value="Hallucination"/>
+        </DeathCustoms>
     </CActorUnit>
     <CActorModel id="ProximityMine@Indicator" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.ProximityMine@Dummy.Start" Send="Create"/>

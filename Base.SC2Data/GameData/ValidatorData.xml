@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorCombine id="Modified@MarineDeathSoundValidators">
+        <Type value="And"/>
+        <CombineArray value="IsNotNeuralParasited"/>
+        <CombineArray value="GasTurret@NotHasHallucination"/>
+    </CValidatorCombine>
     <CValidatorLocationEnumArea id="Duel_Tosh@TargetsGE1" parent="HostileSearch">
         <ResultFailed value="CantFindEnoughTargets"/>
         <WhichLocation Effect="Duel_Tosh@CP" Value="TargetPoint"/>
@@ -11,6 +16,9 @@
         <WhichUnit Value="Caster"/>
         <Value value="1"/>
         <Behavior value="GasTurret@NeuralGas"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="GasTurret@NotHasHallucination">
+        <Behavior value="GasTurret@Hallucination"/>
     </CValidatorUnitCompareBehaviorCount>
     <CValidatorUnitCompareBehaviorCount id="GasTurret@TargetNotNeuralGased">
         <Behavior value="GasTurret@NeuralGas"/>

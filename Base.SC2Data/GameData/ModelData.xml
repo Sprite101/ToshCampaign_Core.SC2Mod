@@ -38,6 +38,8 @@
     </CModel>
     <CModel id="GasTurret@HallucinationDeathModel" parent="OneShotSpellFX">
         <Model value="Assets\Units\Neutral\VoidUnit_Death\VoidUnit_Death.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Flags index="TeenSafe" value="1"/>
     </CModel>
     <CModel id="GasTurret@HallucinationGlaze" parent="Glaze">
         <Model value="Assets\Effects\Glaze\Glaze_Corrupted_TangentSpace\Glaze_Corrupted_TangentSpace.m3"/>
