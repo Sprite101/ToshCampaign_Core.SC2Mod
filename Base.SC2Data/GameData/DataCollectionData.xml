@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CDataCollectionAbil id="ClusterMine">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
+    </CDataCollectionAbil>
     <CDataCollectionAbil id="Duel_Tosh">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
+        <Button value="SteadyTargeting_Tosh"/>
+        <TechInfoAbil value="SteadyTargeting_Tosh"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="EMPRound">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
         <Button value="SteadyTargeting_Tosh"/>
         <TechInfoAbil value="SteadyTargeting_Tosh"/>
@@ -17,6 +25,12 @@
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran,ObjectType:Hero"/>
         <Button value="SteadyTargeting_Tosh"/>
         <TechInfoAbil value="SteadyTargeting_Tosh"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="HealingBotHeal">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran"/>
+    </CDataCollectionAbil>
+    <CDataCollectionAbil id="MobileHealingBot">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
     </CDataCollectionAbil>
     <CDataCollectionUnit id="Modified">
         <EditorCategories value=""/>

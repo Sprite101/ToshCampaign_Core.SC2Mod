@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CValidatorLocationCompareRange id="MobileHealingBot@CasterRangeGreaterThan6">
+        <WhichLocation Value="TargetUnit"/>
+        <Compare value="GT"/>
+        <Range value="5"/>
+    </CValidatorLocationCompareRange>
+    <CValidatorUnitCompareBehaviorCount id="HealingBotHeal@HealNotCasting">
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HealingBotHeal@Controller"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorUnitCompareBehaviorCount id="HealingBotHeal@TargetNotBeingHealed">
+        <ResultFailed value="Error,VoidScienceVesselNanoRepairTargetNotBeingHealed"/>
+        <Behavior value="HealingBotHeal@Target"/>
+    </CValidatorUnitCompareBehaviorCount>
+    <CValidatorCombine id="EMPRound@IsNotMine">
+        <Type value="And"/>
+        <CombineArray value="ProximityMine@IsNotProximityMine"/>
+        <CombineArray value="ProximityMine@IsNotProximityMineBurrowed"/>
+        <CombineArray value="NotSpiderMine"/>
+        <CombineArray value="NotSpiderMineBurrowed"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="GasTurret@IsGasTurret">
+        <Value value="GasTurret"/>
+    </CValidatorUnitType>
+    <CValidatorCombine id="GasTurret@IsGasTurretCombined">
+        <CombineArray value="GasTurret@IsGasTurret"/>
+        <CombineArray value="GasTurret@IsGasTurretBurrowed"/>
+    </CValidatorCombine>
+    <CValidatorUnitType id="GasTurret@IsGasTurretBurrowed">
+        <Value value="GasTurret@Burrowed"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="Modified@IsSpiderMineBurrowed">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Value value="SpiderMineBurrowed"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="Modified@MarineDeathSoundValidators">
         <Type value="And"/>
         <CombineArray value="IsNotNeuralParasited"/>
@@ -26,7 +60,11 @@
     <CValidatorCombine id="HackIn_Tosh@Targets">
         <CombineArray value="Modified@IsUmojanLabMicrobot"/>
         <CombineArray value="Modified@IsGunTurretCombined"/>
+        <CombineArray value="GasTurret@IsGasTurretCombined"/>
         <CombineArray value="ProximityMine@IsProximityMineCombined"/>
+        <CombineArray value="Modified@IsSpiderMine"/>
+        <CombineArray value="Modified@IsSpiderMineBurrowed"/>
+        <ResultFailed value="Error,Error/HackIn_ToshTargets"/>
     </CValidatorCombine>
     <CValidatorUnitCompareBehaviorCount id="GasTurret@HasHallucination">
         <Value value="1"/>
@@ -35,8 +73,16 @@
     <CValidatorUnitType id="Modified@IsUmojanLabMicrobot">
         <Value value="UmojanLabMicrobot"/>
     </CValidatorUnitType>
+    <CValidatorUnitType id="Modified@IsSpiderMine">
+        <ResultFailed value="CantTargetThatUnit"/>
+        <Value value="SpiderMine"/>
+    </CValidatorUnitType>
     <CValidatorUnitType id="ProximityMine@IsProximityMine">
         <Value value="ProximityMine"/>
+    </CValidatorUnitType>
+    <CValidatorUnitType id="ProximityMine@IsNotProximityMine">
+        <Value value="ProximityMine"/>
+        <Find value="0"/>
     </CValidatorUnitType>
     <CValidatorUnitType id="ProximityMine@IsProximityMineBurrowed">
         <Value value="ProximityMine@Burrowed"/>
@@ -47,6 +93,10 @@
     <CValidatorUnitType id="Modified@IsGunTurretUnderground">
         <Value value="GunTurretUnderground"/>
     </CValidatorUnitType>
+    <CValidatorUnitType id="ProximityMine@IsNotProximityMineBurrowed">
+        <Value value="ProximityMine@Burrowed"/>
+        <Find value="0"/>
+    </CValidatorUnitType>
     <CValidatorCombine id="ProximityMine@IsProximityMineCombined">
         <CombineArray value="ProximityMine@IsProximityMine"/>
         <CombineArray value="ProximityMine@IsProximityMineBurrowed"/>
@@ -54,6 +104,12 @@
     <CValidatorCombine id="Modified@IsGunTurretCombined">
         <CombineArray value="Modified@IsGunTurret"/>
         <CombineArray value="Modified@IsGunTurretUnderground"/>
+    </CValidatorCombine>
+    <CValidatorCombine id="EMPRound@IsMine">
+        <CombineArray value="ProximityMine@IsProximityMine"/>
+        <CombineArray value="ProximityMine@IsProximityMineBurrowed"/>
+        <CombineArray value="Modified@IsSpiderMine"/>
+        <CombineArray value="Modified@IsSpiderMineBurrowed"/>
     </CValidatorCombine>
     <CValidatorCombine id="SteadyTargeting_Tosh@Validators">
         <Type value="And"/>

@@ -1,5 +1,8 @@
 ﻿Button/Hotkey/Duel_Tosh=D
+Button/Hotkey/EMPRound=E
 Button/Hotkey/Flashbang_Tosh=T
 Button/Hotkey/HackIn_Tosh=Q
+Button/Hotkey/HealingBotHeal=R
+Button/Hotkey/MobileHealingBot@Hanger=E
 Button/Hotkey/Snipe_Tosh=R
 Button/Hotkey/SteadyTargeting_Tosh=R

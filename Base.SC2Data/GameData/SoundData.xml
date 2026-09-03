@@ -5,6 +5,42 @@
         <AssetArray File="Assets\Sounds\Uni\Units\Artifact\Artifact_EnergyNovaLaunch0.wav"/>
         <Spread value="180.000000"/>
     </CSound>
+    <CSound id="HealingBotHeal@StopSound" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Medivac\Medivac_HealEnd.wav"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.820000,1.640000"/>
+        <Volume value="-12.000000,-12.000000"/>
+    </CSound>
+    <CSound id="HealingBotHeal@StartSound" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Medivac\Medivac_HealStart.wav"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.820000,1.640000"/>
+        <Volume value="-12.000000,-12.000000"/>
+    </CSound>
+    <CSound id="HealingBotHeal@LoopSound" parent="Spell">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Medivac\Medivac_HealLoop.wav" LoopCount="-1"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="-1.820000,1.640000"/>
+        <Volume value="-9.000000,-9.000000"/>
+    </CSound>
+    <CSound id="EMPRound@SelfDestructImpactSound" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium0.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium1.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium2.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium3.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium4.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium5.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium6.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium7.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium8.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <AssetArray File="Assets\Sounds\Terran\SharedEffects\Explosions\SiegeTank_ImpactMedium9.wav" Pitch="-3.000000,3.000000" FacialGroup=""/>
+        <DupeDestroyCount value="5"/>
+        <DupeMaximumMethod value="Replace"/>
+    </CSound>
     <CSound id="ProximityMine@Unburrow" parent="Combat">
         <EditorCategories value="Race:Terran"/>
         <AssetArray File="Assets\Sounds\Terran\Vulture\Vulture_SpiderMinePlace0.wav"/>

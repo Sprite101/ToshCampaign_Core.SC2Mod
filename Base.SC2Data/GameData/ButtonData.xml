@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CButton id="HealingBotHeal">
+        <Icon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-heal-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
+    <CButton id="EMPRound">
+        <Icon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
+        <AlertIcon value="Assets\Textures\btn-ability-terran-emp-color.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
     <CButton id="HackIn_Tosh">
         <Icon value="Assets\Textures\btn-tips-hacking.dds"/>
         <AlertIcon value="Assets\Textures\btn-tips-hacking.dds"/>
         <EditorCategories value="Race:Terran"/>
         <HidesForSimpleText value="0"/>
+    </CButton>
+    <CButton id="MobileHealingBot@Hanger">
+        <Icon value="Assets\Textures\btn-upgrade-terran-nova-defensivedrone.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-nova-defensivedrone.dds"/>
+        <EditorCategories value="Race:Terran"/>
     </CButton>
     <CButton id="Snipe_Tosh">
         <Icon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>

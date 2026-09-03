@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CUnit id="MobileHealingBot">
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="AISupport" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Mover value="Fly"/>
+        <Speed value="3.1992"/>
+        <Acceleration value="2.125"/>
+        <Height value="1.5"/>
+        <CostCategory value="Army"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="attack"/>
+        <AbilArray Link="HealingBotHeal"/>
+        <BehaviorArray Link="AbilityTargetExclusionBehavior"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
+            <LayoutButtons Face="HealingBotHeal" Type="AbilCmd" AbilCmd="HealingBotHeal,Execute" Row="2" Column="0"/>
+        </CardLayouts>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="4"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
+    </CUnit>
+    <CUnit id="EMPRound@Missile" parent="MISSILE_INVULNERABLE">
+        <Race value="Terr"/>
+        <Mover value="EMP2Weapon"/>
+        <EditorCategories value="ObjectType:Projectile,ObjectFamily:Melee"/>
+    </CUnit>
     <CUnit id="GasTurret@Burrowed">
         <DeathRevealRadius value="3"/>
         <Race value="Terr"/>
@@ -123,8 +164,8 @@
         <AbilArray Link="attack"/>
         <AbilArray Link="move"/>
         <AbilArray Link="ProximityMine@Activate"/>
-        <BehaviorArray Link="VultureSpiderMineBurrowFirst"/>
         <BehaviorArray Link="SpiderMineAttackSearch"/>
+        <BehaviorArray Link="EMPRound@SelfDestruct"/>
         <Radius value="0.25"/>
         <SeparationRadius value="0"/>
         <SubgroupPriority value="15"/>
@@ -171,6 +212,13 @@
         <LeaderAlias value="SpiderMine"/>
         <SelectAlias value="SpiderMine"/>
         <AbilArray Link="ProximityMine@Unburrow"/>
+        <BehaviorArray Link="EMPRound@SelfDestruct"/>
+    </CUnit>
+    <CUnit id="SpiderMine">
+        <BehaviorArray Link="EMPRound@SelfDestruct"/>
+    </CUnit>
+    <CUnit id="SpiderMineBurrowed">
+        <BehaviorArray Link="EMPRound@SelfDestruct"/>
     </CUnit>
     <CUnit id="ToshGhost_Default">
         <DeathRevealRadius value="3"/>
@@ -211,6 +259,9 @@
         <AbilArray Link="Snipe_Tosh"/>
         <AbilArray Link="Duel_Tosh"/>
         <AbilArray Link="Flashbang_Tosh"/>
+        <AbilArray Link="EMPRound"/>
+        <AbilArray Link="HackIn_Tosh"/>
+        <AbilArray Link="MobileHealingBot@Hanger"/>
         <BehaviorArray Link="HeroDetectorRadar"/>
         <WeaponArray Link="C10CanisterRifle_Default"/>
         <CardLayouts>
@@ -224,6 +275,8 @@
             <LayoutButtons Face="Snipe_Tosh" Type="AbilCmd" AbilCmd="Snipe_Tosh,Execute" Row="2" Column="1"/>
             <LayoutButtons Face="Duel_Tosh" Type="AbilCmd" AbilCmd="Duel_Tosh,Execute" Row="1" Column="0"/>
             <LayoutButtons Face="Flashbang_Tosh" Type="AbilCmd" AbilCmd="Flashbang_Tosh,Execute" Row="2" Column="2"/>
+            <LayoutButtons Face="EMPRound" Type="AbilCmd" AbilCmd="EMPRound,Execute" Row="1" Column="1"/>
+            <LayoutButtons Face="HackIn_Tosh" Type="AbilCmd" AbilCmd="HackIn_Tosh,Execute" Row="1" Column="2"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>

@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectApplyBehavior id="MobileHealingBot@RecallAB">
+        <EditorCategories value=""/>
+        <Behavior value="MobileHealingBot@Recall1"/>
+    </CEffectApplyBehavior>
+    <CEffectTeleport id="MobileHealingBot@RecallTeleport">
+        <ValidatorArray value="MobileHealingBot@CasterRangeGreaterThan6"/>
+        <EditorCategories value="Race:Terran"/>
+        <PlacementAround Value="CasterUnit"/>
+        <SourceLocation Value="TargetUnit"/>
+    </CEffectTeleport>
+    <CEffectApplyBehavior id="HealingBotHeal@ControllerAB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="HealingBotHeal@Controller"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HealingBotHeal@ControllerRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <BehaviorLink value="HealingBotHeal@Controller"/>
+    </CEffectRemoveBehavior>
+    <CEffectSet id="HealingBotHeal@Set">
+        <ValidatorArray value="HealingBotHeal@TargetNotBeingHealed"/>
+        <ValidatorArray value="NotFullLife"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="HealingBotHeal@ControllerRB"/>
+        <EffectArray value="HealingBotHeal@TargetAB"/>
+    </CEffectSet>
+    <CEffectModifyUnit id="HealingBotHeal@MU">
+        <EditorCategories value="Race:Terran"/>
+        <LaunchUnit Value="Caster"/>
+        <ImpactUnit Value="Source"/>
+        <VitalArray index="Life">
+            <Change value="0.5"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectApplyBehavior id="HealingBotHeal@TargetAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="HealingBotHeal@Target"/>
+    </CEffectApplyBehavior>
+    <CEffectRemoveBehavior id="HealingBotHeal@TargetRB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Effect="HealingBotHeal@TargetAB"/>
+        <BehaviorLink value="HealingBotHeal@Target"/>
+    </CEffectRemoveBehavior>
+    <CEffectRemoveBehavior id="EMPRound@KillMinesRB">
+        <EditorCategories value="Race:Terran"/>
+        <BehaviorLink value="EMPRound@SelfDestruct"/>
+    </CEffectRemoveBehavior>
+    <CEffectApplyBehavior id="EMPRound@AB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="EMPRound@EMPBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="EMPRound@ABMechanical">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="EMPRound@EMPDisableBehavior"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="EMPRound@Damage">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <ShieldBonus value="100"/>
+        <Flags index="Notification" value="1"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectDamage>
+    <CEffectLaunchMissile id="EMPRound@LM">
+        <ValidatorArray index="0" value="EMP2TargetFilters"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <ImpactEffect value="EMPRound@SearchArea"/>
+        <AmmoUnit value="EMPRound@Missile"/>
+    </CEffectLaunchMissile>
+    <CEffectModifyUnit id="EMPRound@MU">
+        <ValidatorArray value="empUTargetFilters"/>
+        <EditorCategories value="Race:Terran"/>
+        <VitalArray index="Energy">
+            <Change value="-100"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectEnumArea id="EMPRound@SearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <LaunchLocation Value="TargetPoint"/>
+        <ImpactLocation Value="TargetPoint"/>
+        <SearchFilters value="-;Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="EMPRound@SearchSet"/>
+    </CEffectEnumArea>
+    <CEffectSet id="EMPRound@SearchSet">
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="EMPRound@Damage"/>
+        <EffectArray value="EMPRound@MU"/>
+        <EffectArray value="EMPRound@AB"/>
+        <EffectArray value="EMPRound@ABMechanical"/>
+        <EffectArray value="EMPRound@KillMinesRB"/>
+    </CEffectSet>
     <CEffectCreatePersistent id="GasTurret@CreateHallucinationRandomCP">
         <EditorCategories value="Race:Terran"/>
         <Flags index="RandomOffset" value="1"/>
@@ -16,6 +109,8 @@
         <PeriodicOffsetArray value="0,1,0"/>
         <PeriodicPeriodArray value="0"/>
         <ValidatorArray value="GasTurret@TargetIsNeuralGased"/>
+        <WhichLocation Value="SourcePoint"/>
+        <OffsetVectorStartLocation Value="SourcePoint"/>
     </CEffectCreatePersistent>
     <CEffectDamage id="Duel_Tosh@Damage" parent="DU_WEAP">
         <ValidatorArray value="noMarkers"/>
@@ -41,7 +136,8 @@
         <CreateFlags index="UseFood" value="0"/>
         <SpawnEffect value="GasTurret@HallucinationCreateSet"/>
         <SpawnUnit value="Ghost"/>
-        <WhichLocation Value="SourceUnitOrPoint"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <SpawnRange value="5"/>
     </CEffectCreateUnit>
     <CEffectSet id="GasTurret@CreateSet">
         <EditorCategories value="Race:Terran"/>
@@ -53,6 +149,7 @@
         <EditorCategories value="Race:Terran"/>
         <SearchFilters value="Visible;Self,Player,Ally,Neutral,Structure,Missile,Invulnerable"/>
         <AreaArray Radius="10" Effect="GasTurret@AB"/>
+        <ValidatorArray value="GasTurret@NotHasHallucination"/>
     </CEffectEnumArea>
     <CEffectCreateUnit id="GasTurret@CreateHallucinationMarine">
         <EditorCategories value="Race:Terran"/>
@@ -61,7 +158,8 @@
         <CreateFlags index="UseFood" value="0"/>
         <SpawnEffect value="GasTurret@HallucinationCreateSet"/>
         <SpawnUnit value="Marine"/>
-        <WhichLocation Value="SourceUnitOrPoint"/>
+        <WhichLocation Value="TargetUnitOrPoint"/>
+        <SpawnRange value="5"/>
     </CEffectCreateUnit>
     <CEffectSet id="GasTurret@HallucinationCreateSet">
         <EditorCategories value="Race:Terran"/>
@@ -84,12 +182,12 @@
         <Flags index="Notification" value="1"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectDamage>
-    <CEffectDamage id="ProximityMine@Damage">
+    <CEffectDamage id="EMPRound@SelfDestructDamage">
         <EditorCategories value="Race:Terran"/>
         <ResponseFlags index="Acquire" value="1"/>
         <ResponseFlags index="Flee" value="1"/>
         <Amount value="150"/>
-        <SearchFilters value="-;Self,Player,Ally,Air,Missile,Stasis,Dead,Invulnerable"/>
+        <SearchFilters value="-;Self,Air,Missile,Stasis,Dead,Invulnerable"/>
         <SearchFlags index="ExtendByUnitRadius" value="1"/>
     </CEffectDamage>
     <CEffectEnumArea id="Flashbang_Tosh@SearchArea">
@@ -98,9 +196,21 @@
         <AreaArray Radius="1.5" Effect="Flashbang_Tosh@SearchSet"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
+    <CEffectApplyBehavior id="HackIn_Tosh@BenignAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="HackIn_Tosh@Benign"/>
+    </CEffectApplyBehavior>
+    <CEffectDamage id="ProximityMine@Damage2">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Amount value="150"/>
+        <SearchFilters value="-;Self,Player,Ally,Air,Missile,Stasis,Dead,Invulnerable"/>
+        <SearchFlags index="ExtendByUnitRadius" value="1"/>
+    </CEffectDamage>
     <CEffectEnumArea id="ProximityMine@SearchArea">
         <EditorCategories value="Race:Terran"/>
-        <SearchFilters value="Ground;Player,Ally,Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <SearchFilters value="Ground;Missile,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="2" Effect="ProximityMine@SearchSet"/>
         <SearchFlags index="CallForHelp" value="1"/>
     </CEffectEnumArea>
@@ -115,9 +225,15 @@
         <PeriodCount value="1"/>
         <PeriodicPeriodArray value="1"/>
     </CEffectCreatePersistent>
+    <CEffectEnumArea id="EMPRound@SelfDestructSearchArea">
+        <EditorCategories value="Race:Terran"/>
+        <SearchFilters value="Ground;Missile,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="2" Effect="EMPRound@SelfDestructDamage"/>
+        <SearchFlags index="CallForHelp" value="1"/>
+    </CEffectEnumArea>
     <CEffectSet id="ProximityMine@SearchSet">
         <EditorCategories value="Race:Terran"/>
-        <EffectArray value="ProximityMine@Damage"/>
+        <EffectArray value="EMPRound@SelfDestructDamage"/>
     </CEffectSet>
     <CEffectApplyBehavior id="ProximityMine@InitialAB">
         <EditorCategories value="Race:Terran"/>
@@ -164,6 +280,7 @@
         <EditorCategories value="Race:Terran"/>
         <EffectArray value="HackIn_Tosh@CP"/>
         <EffectArray value="HackIn_Tosh@AB"/>
+        <EffectArray value="HackIn_Tosh@BenignAB"/>
     </CEffectSet>
     <CEffectApplyBehavior id="Snipe_Tosh@StunAB">
         <EditorCategories value="Race:Terran"/>

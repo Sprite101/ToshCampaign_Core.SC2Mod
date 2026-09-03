@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CAbilArmMagazine id="MobileHealingBot@Hanger">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Launch value="ReleaseAtSource"/>
+        <Flags index="AutoCreate" value="1"/>
+        <Flags index="Retarget" value="1"/>
+        <Leash value="8"/>
+        <InfoArray index="Ammo1" CountStart="2" Distance="1" Manage="Recall" Unit="MobileHealingBot">
+            <Charge HideCount="1" Link="MobileHealingBot" Location="Unit"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="MobileHealingBot@Hanger">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <EffectArray index="Create" value="MobileHealingBot@RecallAB"/>
+        <ExternalAngle value="-119.9926"/>
+        <ExternalAngle value="119.9926"/>
+        <MaxCount value="2"/>
+    </CAbilArmMagazine>
+    <CAbilEffectTarget id="HealingBotHeal">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="HealingBotHeal@Set"/>
+        <Flags index="AllowMovement" value="1"/>
+        <Flags index="AutoCast" value="1"/>
+        <Flags index="AutoCastOn" value="1"/>
+        <Flags index="NoDeceleration" value="1"/>
+        <TargetFilters value="Biological,Visible;Self,Neutral,Enemy,Missile,Uncommandable,UnderConstruction,Dead,Hidden,Invulnerable"/>
+        <TargetSorts RequestCount="1">
+            <SortArray value="TSAlliancePassive"/>
+            <SortArray value="TSLifeFraction"/>
+            <SortArray value="TSDistance"/>
+        </TargetSorts>
+        <Range value="4"/>
+        <AutoCastAcquireLevel value="Defensive"/>
+        <AutoCastFilters value="Biological,Visible;Self,Neutral,Enemy,Missile,Dead,Hidden,Invulnerable"/>
+        <AutoCastRange value="6"/>
+        <AutoCastValidatorArray value="NotWarpingIn"/>
+        <AutoCastValidatorArray value="HealingBotHeal@HealNotCasting"/>
+        <AutoCastValidatorArray value="HealingBotHeal@TargetNotBeingHealed"/>
+        <AutoCastValidatorArray value="CasterIsNotMovingOrStopped"/>
+        <DefaultError value="RequiresHealTarget"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="HealingBotHeal"/>
+        <AcquireAttackers value="1"/>
+    </CAbilEffectTarget>
+    <CAbilEffectTarget id="EMPRound">
+        <Alignment value="Negative"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Effect index="0" value="EMPRound@LM"/>
+        <Cost>
+            <Vital index="Energy" value="75"/>
+        </Cost>
+        <Range value="10"/>
+        <PrepTime value="0.2"/>
+        <FinishTime value="0.0625"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
+        <CursorEffect value="EMPRound@SearchArea"/>
+        <AINotifyEffect value="EMPLaunchMissile"/>
+        <CmdButtonArray index="Execute" DefaultButtonFace="EMPRound"/>
+    </CAbilEffectTarget>
     <CAbilMorph id="GasTurret@Burrow">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="BurrowDown">
@@ -65,6 +127,9 @@
         <CmdButtonArray index="Execute" DefaultButtonFace="HackIn_Tosh"/>
         <CmdButtonArray index="Cancel" DefaultButtonFace="Cancel"/>
         <PrepTime value="1"/>
+        <CastOutroTime value="0.5"/>
+        <UninterruptibleArray index="Prep" value="1"/>
+        <UninterruptibleArray index="Finish" value="1"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="Snipe_Tosh">
         <Alignment value="Negative"/>

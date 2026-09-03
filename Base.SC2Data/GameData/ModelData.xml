@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CModel id="HealingBotHeal@Beam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Protoss\Sentry_HealingBeam\Sentry_HealingBeam.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="HealingBotHeal@Impact" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\MedicHeal\MedicHeal.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="MobileHealingBot@Unit" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Terran\Repair_Drone_MP\Repair_Drone_MP.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow05"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseCamera value="Star2CameraLow05"/>
+        <UnitGlossaryCamera value="Star2CameraLow05"/>
+    </CModel>
+    <CModel id="MobileHealingBot@Death" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Terran\Repair_Drone_MP_Death\Repair_Drone_MP_Death.m3"/>
+    </CModel>
     <CModel id="GasTurret@HallucinationBirthModel" parent="OneShotSpellFX">
         <Model value="Assets\Effects\Other\Void_UnitSpawn_Impact\Void_UnitSpawn_Impact.m3"/>
         <ScaleMax value="0.750000,0.750000,0.750000"/>
@@ -44,6 +63,10 @@
     <CModel id="GasTurret@HallucinationGlaze" parent="Glaze">
         <Model value="Assets\Effects\Glaze\Glaze_Corrupted_TangentSpace\Glaze_Corrupted_TangentSpace.m3"/>
         <Priority value="32"/>
+    </CModel>
+    <CModel id="EMPRound@SelfDestructImpactEffect" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\TerranLargeUnitDeath\TerranLargeUnitDeath.m3"/>
+        <EditorCategories value="Race:Terran"/>
     </CModel>
     <CModel id="ProximityMine@Indicator" parent="RacePersistentSpellFX" Race="Terran">
         <Model value="Assets\UI\Cursors\DropPodCursor\DropPodCursor.m3"/>
@@ -126,6 +149,108 @@
         <Model value="Assets\Effects\Terran\GhostWeaponLaunch\GhostWeaponLaunch.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
+    <CModel id="EMPRound@EMPDisableEffect" parent="PersistentSpellFX">
+        <EditorCategories value="Race:Terran"/>
+        <Model value="Assets\Doodads\THorner05SElectricalArcs\THorner05SElectricalArcs.m3"/>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Amb_ElectricArc_Long"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Amb_ElectricArc_Long"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="0.010000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Amb_ElectricArc_Long"/>
+            <Type value="Sound"/>
+            <Time value="0.600000"/>
+            <Payload value="Amb_ElectricArc_Long"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,00"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="1.100000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,03"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="0.289000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,03"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="1.057000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,02"/>
+            <Name value="Amb_ElectricArc_Long"/>
+            <Type value="Sound"/>
+            <Time value="0.133000"/>
+            <Payload value="Amb_ElectricArc_Long"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,02"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="0.133000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,02"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="0.266000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,02"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="0.466000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,02"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="0.700000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,02"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="1.033000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,02"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="1.233000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+        <Events>
+            <Anim value="Stand,02"/>
+            <Name value="Amb_ElectricArc_Short"/>
+            <Type value="Sound"/>
+            <Time value="1.400000"/>
+            <Payload value="Amb_ElectricArc_Short"/>
+        </Events>
+    </CModel>
     <CModel id="ToshGhost_Default" parent="Unit">
         <Model value="Assets\Units\Terran\Tosh\Tosh.m3"/>
         <EditorCategories value="Race:Terran"/>
@@ -158,5 +283,18 @@
         <ScaleMin value="0.600000,0.600000,0.600000"/>
         <SelectionRadius value="0.833200"/>
         <ShadowRadius value="0.833200"/>
+    </CModel>
+    <CModel id="ProximityMine@BurrowedSplat" parent="Splat">
+        <Model value="Assets\Splats\WidowMineBurrowedSplat\WidowMineBurrowedSplat.m3"/>
+        <EditorCategories value="Race:Terran"/>
+        <Lighting value="BurrowedSplat"/>
+    </CModel>
+    <CModel id="MobileHealingBot@TeleportInModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Terran\ToshTeleportIn\ToshTeleportIn.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="MobileHealingBot@TeleportOutModel" parent="OneShotSpellFX">
+        <Model value="Assets\Effects\Protoss\Stalker_Deluxe_Collection_BlinkIn\Stalker_Deluxe_Collection_BlinkIn.m3"/>
+        <EditorCategories value="Race:Terran"/>
     </CModel>
 </Catalog>

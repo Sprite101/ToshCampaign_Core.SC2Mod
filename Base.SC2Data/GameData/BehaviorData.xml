@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CBehaviorBuff id="MobileHealingBot@Recall">
+        <BehaviorFlags index="Permanent" value="1"/>
+        <EditorCategories value="AbilityorEffectType:Units"/>
+        <Period value="0.25"/>
+        <PeriodicEffect value="MobileHealingBot@RecallTeleport"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HealingBotHeal@Controller">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <BuffFlags index="Channeled" value="1"/>
+        <FinalEffect value="HealingBotHeal@TargetRB"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="HealingBotHeal@Target">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="NotFullLife"/>
+        <RemoveValidatorArray value="NotHidden"/>
+        <RemoveValidatorArray value="IsBiological"/>
+        <Period value="0.0625"/>
+        <InitialEffect value="HealingBotHeal@ControllerAB"/>
+        <PeriodicEffect value="HealingBotHeal@MU"/>
+        <FinalEffect value="HealingBotHeal@ControllerRB"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EMPRound@EMPBehavior">
+        <Alignment value="Negative"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-emp.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <RemoveValidatorArray value="IsNotBuried"/>
+        <Duration value="10"/>
+        <Modification>
+            <StateFlags index="SuppressCloak" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EMPRound@EMPDisableBehavior">
+        <Alignment value="Negative"/>
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-emp.dds"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <DisplayDuration index="Self" value="1"/>
+        <DisplayDuration index="Ally" value="1"/>
+        <DisplayDuration index="Neutral" value="1"/>
+        <DisplayDuration index="Enemy" value="1"/>
+        <RemoveValidatorArray value="IsMechanical"/>
+        <Duration value="10"/>
+        <Modification>
+            <StateFlags index="Stun" value="1"/>
+        </Modification>
+    </CBehaviorBuff>
     <CBehaviorBuff id="GasTurret@NeuralGas">
         <Alignment value="Negative"/>
         <InfoIcon value="Assets\Textures\btn-ability-zerg-neuralparasite.dds"/>
@@ -65,6 +113,14 @@
             <StateFlags index="SuppressPassenger" value="1"/>
         </Modification>
     </CBehaviorBuff>
+    <CBehaviorBuff id="HackIn_Tosh@Benign">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="10"/>
+        <Modification>
+            <StateFlags index="Benign" value="1"/>
+        </Modification>
+        <RemoveValidatorArray value="CasterNotAttacking"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ProximityMine@Initial">
         <InfoIcon value="Assets\Textures\btn-ability-terran-activatemine.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -101,6 +157,13 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Duration value="10"/>
         <ExpireEffect value="Suicide"/>
+    </CBehaviorBuff>
+    <CBehaviorBuff id="EMPRound@SelfDestruct">
+        <InfoFlags index="Hidden" value="1"/>
+        <InfoIcon value="Assets\Textures\btn-ability-terran-activatemine.dds"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
+        <FinalEffect value="EMPRound@SelfDestructSearchArea"/>
+        <BehaviorFlags index="Permanent" value="1"/>
     </CBehaviorBuff>
     <CBehaviorBuff id="Snipe_Tosh@Stun">
         <InfoIcon value="Assets\Textures\stunswirl1_orange.dds"/>
