@@ -6,6 +6,7 @@ Abil/Name/GasTurret@Unburrow=Unburrow
 Abil/Name/HackIn_Tosh=Hack In
 Abil/Name/HealingBotHeal=Heal
 Abil/Name/MobileDefensiveBot@Hangar=Hangar
+Abil/Name/MobileDefensiveBot@Overload=Overload
 Abil/Name/MobileHealingBot@Hanger=Hanger
 Abil/Name/ProximityMine@Activate=Activate
 Abil/Name/ProximityMine@Burrow=Burrow
@@ -32,6 +33,7 @@ Button/Name/Flashbang_Tosh=Flashbang
 Button/Name/HackIn_Tosh=Hack In
 Button/Name/HealingBotHeal=Nano Heal
 Button/Name/MobileDefensiveBot@Hangar=Mobile Defensive Bot
+Button/Name/MobileDefensiveBot@Overload=System Overload
 Button/Name/MobileHealingBot@Hanger=Mobile Healing Bot
 Button/Name/Snipe_Tosh=Sniper Round
 Button/Name/SteadyTargeting_Tosh=Steady Targeting
@@ -44,6 +46,7 @@ Button/Tooltip/HackIn_Tosh=Hack into an unmanned vehicle or structure, temporari
 Button/Tooltip/HealingBotHeal=Heals a friendly biological unit.<n/><n/><c val="f078ff">Heals 2 life per second.</c>
 Button/Tooltip/MobileDefensiveBot=Flying spy. Cloak renders the unit invisible to enemies without detection.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MobileDefensiveBot@Hangar=Two repair drones automatically heal friendly mechanical units near the Carrier.
+Button/Tooltip/MobileDefensiveBot@Overload=Overloads Mobile Defensive Bot for <d ref="Behavior,MobileDefensiveBot@Overload,Duration"/> seconds, boosting its APS system to function <d ref="Behavior,MobileDefensiveBot@Overload,Modification.AttackSpeedMultiplier"/> times as fast.
 Button/Tooltip/MobileHealingBot=Flying spy. Cloak renders the unit invisible to enemies without detection.<n/><n/><c val="FFE303">Detector</c>
 Button/Tooltip/MobileHealingBot@Hanger=Two repair drones automatically heal friendly mechanical units near the Carrier.
 Button/Tooltip/ProximityMine=Spider Mines pursue enemy units that come in range, and detonate for heavy area damage. Buried Spider Mines can only be seen by enemy <c val="FFE303">Detectors</c>.
@@ -112,6 +115,8 @@ Effect/Name/MobileDefensiveBot@AB=AB
 Effect/Name/MobileDefensiveBot@Damage=Damage
 Effect/Name/MobileDefensiveBot@InitialSet=Initial Set
 Effect/Name/MobileDefensiveBot@MURemoveEnergy=MU Remove Energy
+Effect/Name/MobileDefensiveBot@OverloadAB=Overload AB
+Effect/Name/MobileDefensiveBot@OverloadIterateMagazine=Overload Iterate Magazine
 Effect/Name/MobileDefensiveBot@SearchArea=Search Area
 Effect/Name/MobileDefensiveBot@SearchSet=Search Set
 Effect/Name/MobileDefensiveBot@VisibilityDummyDamage=Visibility Dummy Damage

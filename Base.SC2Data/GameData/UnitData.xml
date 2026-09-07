@@ -298,6 +298,7 @@
         <AbilArray Link="HackIn_Tosh"/>
         <AbilArray Link="MobileHealingBot@Hanger"/>
         <AbilArray Link="MobileDefensiveBot@Hangar"/>
+        <AbilArray Link="MobileDefensiveBot@Overload"/>
         <BehaviorArray Link="HeroDetectorRadar"/>
         <WeaponArray Link="C10CanisterRifle_Default"/>
         <CardLayouts>
@@ -313,6 +314,7 @@
             <LayoutButtons Face="Flashbang_Tosh" Type="AbilCmd" AbilCmd="Flashbang_Tosh,Execute" Row="2" Column="2"/>
             <LayoutButtons Face="EMPRound" Type="AbilCmd" AbilCmd="EMPRound,Execute" Row="1" Column="1"/>
             <LayoutButtons Face="HackIn_Tosh" Type="AbilCmd" AbilCmd="HackIn_Tosh,Execute" Row="1" Column="2"/>
+            <LayoutButtons Face="MobileDefensiveBot@Overload" Type="AbilCmd" AbilCmd="MobileDefensiveBot@Overload,Execute" Row="1" Column="3"/>
         </CardLayouts>
         <Radius value="0.375"/>
         <SeparationRadius value="0.375"/>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CEffectApplyBehavior id="MobileDefensiveBot@OverloadAB">
+        <EditorCategories value="Race:Terran"/>
+        <Behavior value="MobileDefensiveBot@Overload"/>
+    </CEffectApplyBehavior>
     <CEffectApplyBehavior id="MobileHealingBot@RecallAB">
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Terran"/>
         <Behavior value="MobileHealingBot@Recall1"/>
     </CEffectApplyBehavior>
     <CEffectTeleport id="MobileHealingBot@RecallTeleport">
@@ -230,7 +234,7 @@
     </CEffectModifyUnit>
     <CEffectSet id="MobileDefensiveBot@InitialSet">
         <ValidatorArray value="PointDefenseDroneUnitFilter"/>
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Terran"/>
         <EffectArray value="MobileDefensiveBot@SearchArea"/>
         <EffectArray value="MobileDefensiveBot@AB"/>
     </CEffectSet>
@@ -244,7 +248,7 @@
     </CEffectSet>
     <CEffectEnumArea id="MobileDefensiveBot@SearchArea">
         <ValidatorArray value="PointDefenseSearchTargetFilters"/>
-        <EditorCategories value=""/>
+        <EditorCategories value="Race:Terran"/>
         <ImpactLocation Value="SourceUnit"/>
         <SearchFilters value="Missile,Visible;Self,Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="8" Effect="MobileDefensiveBot@SearchSet"/>
@@ -331,6 +335,10 @@
         <EffectArray value="HackIn_Tosh@AB"/>
         <EffectArray value="HackIn_Tosh@BenignAB"/>
     </CEffectSet>
+    <CEffectEnumMagazine id="MobileDefensiveBot@OverloadIterateMagazine">
+        <EditorCategories value="Race:Terran"/>
+        <EffectExternal value="MobileDefensiveBot@OverloadAB"/>
+    </CEffectEnumMagazine>
     <CEffectApplyBehavior id="Snipe_Tosh@StunAB">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="Snipe_Tosh@Stun"/>

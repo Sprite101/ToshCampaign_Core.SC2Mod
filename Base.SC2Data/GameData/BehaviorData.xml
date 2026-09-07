@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Catalog>
+    <CBehaviorBuff id="MobileDefensiveBot@Overload">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="5"/>
+        <Modification AttackSpeedMultiplier="2"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="MobileHealingBot@Recall">
         <BehaviorFlags index="Permanent" value="1"/>
-        <EditorCategories value="AbilityorEffectType:Units"/>
+        <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Period value="0.25"/>
         <PeriodicEffect value="MobileHealingBot@RecallTeleport"/>
     </CBehaviorBuff>

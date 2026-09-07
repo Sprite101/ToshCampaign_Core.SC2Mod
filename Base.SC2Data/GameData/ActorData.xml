@@ -201,8 +201,8 @@
         <On Terms="Behavior.WarpInEffect15.Off" Send="ModelSwap Observer"/>
         <On Terms="Behavior.WarpInEffect15.Off" Send="AnimBaselineStart"/>
         <On Terms="UnitHeightUpdate.*.Land" Send="Create Observer_Land"/>
-        <On Terms="Behavior.PointDefenseReady.On" Send="AnimBracketStart Work Work,Start Work Work,End"/>
-        <On Terms="Behavior.PointDefenseReady.Off" Send="AnimBracketStop Work"/>
+        <On Terms="Behavior.MobileDefensiveBot@Overload.On" Send="AnimBracketStart Work Work,Start Work Work,End"/>
+        <On Terms="Behavior.MobileDefensiveBot@Overload.Off" Send="AnimBracketStop Work"/>
         <Model value="MobileDefensiveBot@Unit"/>
         <Scale value="0.500000"/>
         <AnimBlendTime value="1.200000"/>

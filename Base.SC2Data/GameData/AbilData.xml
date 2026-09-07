@@ -7,7 +7,7 @@
         <Flags index="Retarget" value="1"/>
         <Flags index="ShowStatus" value="0"/>
         <Leash value="6"/>
-        <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Ignore" Unit="MobileHealingBot">
+        <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Recall" Unit="MobileHealingBot">
             <Charge HideCount="1" Link="MobileHealingBot" Location="Unit"/>
             <Cooldown Link="Abil/##id##"/>
             <Button DefaultButtonFace="MobileHealingBot@Hanger">
@@ -109,7 +109,7 @@
         <Flags index="Retarget" value="1"/>
         <Flags index="ShowStatus" value="0"/>
         <Leash value="6"/>
-        <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Ignore" Unit="MobileDefensiveBot">
+        <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Recall" Unit="MobileDefensiveBot">
             <Charge HideCount="1" Link="MobileDefensiveBot" Location="Unit"/>
             <Cooldown Link="Abil/##id##"/>
             <Button DefaultButtonFace="MobileDefensiveBot@Hangar">
@@ -254,4 +254,16 @@
         <AutoCastRange value="1.5"/>
         <AutoCastCountMin value="1"/>
     </CAbilMorph>
+    <CAbilEffectInstant id="MobileDefensiveBot@Overload">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <InfoTooltipPriority value="1"/>
+        <Effect index="0" value="MobileDefensiveBot@OverloadIterateMagazine"/>
+        <Flags index="Transient" value="1"/>
+        <Cost>
+            <Cooldown TimeUse="25"/>
+        </Cost>
+        <CmdButtonArray index="Execute" DefaultButtonFace="MobileDefensiveBot@Overload">
+            <Flags index="ToSelection" value="1"/>
+        </CmdButtonArray>
+    </CAbilEffectInstant>
 </Catalog>

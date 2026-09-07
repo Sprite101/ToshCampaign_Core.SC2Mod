@@ -22,7 +22,7 @@
         <Marker>
             <MatchFlags index="Link" value="1"/>
         </Marker>
-        <Period value="0"/>
+        <Period value="3"/>
         <DamagePoint value="0"/>
         <Backswing value="0"/>
         <Effect value="MobileDefensiveBot@InitialSet"/>

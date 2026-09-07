@@ -4,6 +4,7 @@ Button/Hotkey/Flashbang_Tosh=T
 Button/Hotkey/HackIn_Tosh=Q
 Button/Hotkey/HealingBotHeal=R
 Button/Hotkey/MobileDefensiveBot@Hangar=E
+Button/Hotkey/MobileDefensiveBot@Overload=T
 Button/Hotkey/MobileHealingBot@Hanger=E
 Button/Hotkey/Snipe_Tosh=R
 Button/Hotkey/SteadyTargeting_Tosh=R
