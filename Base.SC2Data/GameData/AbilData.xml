@@ -5,6 +5,7 @@
         <Launch value="ReleaseAtSource"/>
         <Flags index="AutoCreate" value="1"/>
         <Flags index="Retarget" value="1"/>
+        <Flags index="ShowStatus" value="0"/>
         <Leash value="6"/>
         <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Ignore" Unit="MobileHealingBot">
             <Charge HideCount="1" Link="MobileHealingBot" Location="Unit"/>
@@ -106,6 +107,7 @@
         <Launch value="ReleaseAtSource"/>
         <Flags index="AutoCreate" value="1"/>
         <Flags index="Retarget" value="1"/>
+        <Flags index="ShowStatus" value="0"/>
         <Leash value="6"/>
         <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Ignore" Unit="MobileDefensiveBot">
             <Charge HideCount="1" Link="MobileDefensiveBot" Location="Unit"/>
