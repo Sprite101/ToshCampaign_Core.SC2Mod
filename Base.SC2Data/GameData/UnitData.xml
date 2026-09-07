@@ -14,7 +14,7 @@
         <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
         <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
         <Mover value="Fly"/>
-        <Speed value="3.1992"/>
+        <Speed value="4"/>
         <Acceleration value="2.125"/>
         <Height value="1.5"/>
         <CostCategory value="Army"/>
@@ -137,6 +137,41 @@
         <GlossaryPriority value="263"/>
         <KillDisplay value="Always"/>
         <RankDisplay value="Always"/>
+    </CUnit>
+    <CUnit id="MobileDefensiveBot">
+        <Race value="Terr"/>
+        <Mob value="Campaign"/>
+        <FlagArray index="Unselectable" value="1"/>
+        <FlagArray index="Untargetable" value="1"/>
+        <FlagArray index="Invulnerable" value="1"/>
+        <FlagArray index="AISupport" value="1"/>
+        <PlaneArray index="Air" value="1"/>
+        <Collide index="Flying" value="1"/>
+        <Attributes index="Light" value="1"/>
+        <Attributes index="Mechanical" value="1"/>
+        <LifeArmorName value="Unit/LifeArmorName/TerranShipPlating"/>
+        <ShieldArmorName value="Unit/ShieldArmorName/ProtossPlasmaShields"/>
+        <Mover value="Fly"/>
+        <Speed value="4"/>
+        <Acceleration value="2.125"/>
+        <Height value="1.5"/>
+        <CostCategory value="Army"/>
+        <AbilArray Link="stop"/>
+        <AbilArray Link="move"/>
+        <AbilArray Link="attack"/>
+        <BehaviorArray Link="AbilityTargetExclusionBehavior"/>
+        <WeaponArray Link="MobileDefensiveBot@PointDefenseLaser" Turret="PointDefenseDrone"/>
+        <CardLayouts>
+            <LayoutButtons Face="Move" Type="AbilCmd" AbilCmd="move,Move" Row="0" Column="0"/>
+            <LayoutButtons Face="Stop" Type="AbilCmd" AbilCmd="stop,Stop" Row="0" Column="1"/>
+            <LayoutButtons Face="MoveHoldPosition" Type="AbilCmd" AbilCmd="move,HoldPos" Row="0" Column="2"/>
+            <LayoutButtons Face="MovePatrol" Type="AbilCmd" AbilCmd="move,Patrol" Row="0" Column="3"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="attack,Execute" Row="0" Column="4"/>
+            <LayoutButtons Face="AcquireMove" Type="AbilCmd" AbilCmd="move,AcquireMove" Row="0" Column="4"/>
+        </CardLayouts>
+        <ScoreResult value="BuildOrder"/>
+        <SubgroupPriority value="4"/>
+        <EditorCategories value="ObjectType:Unit,ObjectFamily:Campaign"/>
     </CUnit>
     <CUnit id="ProximityMine">
         <DeathRevealRadius value="3"/>
@@ -262,6 +297,7 @@
         <AbilArray Link="EMPRound"/>
         <AbilArray Link="HackIn_Tosh"/>
         <AbilArray Link="MobileHealingBot@Hanger"/>
+        <AbilArray Link="MobileDefensiveBot@Hangar"/>
         <BehaviorArray Link="HeroDetectorRadar"/>
         <WeaponArray Link="C10CanisterRifle_Default"/>
         <CardLayouts>

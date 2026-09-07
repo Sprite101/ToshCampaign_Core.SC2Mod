@@ -78,4 +78,21 @@
         <AssetArray File="Assets\Sounds\Karax_ReclamCast_02.wav" FacialGroup=""/>
         <Pitch value="0.000000,1.000000"/>
     </CSound>
+    <CSound id="MobileDefensiveBot@ImpactSound" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Raven\Raven_PointDefenseDroneAttackImpact0.wav" FacialGroup=""/>
+        <Pitch value="0.000000,3.000000"/>
+        <Spread value="20.000000"/>
+        <SustainFade index="1" Time="2500"/>
+        <Volume value="-3.000000,-3.000000"/>
+    </CSound>
+    <CSound id="MobileDefensiveBot@LaunchSound" parent="Combat">
+        <EditorCategories value="Race:Terran"/>
+        <AssetArray File="Assets\Sounds\Terran\Raven\Raven_PointDefenseDroneAttackLaunch0.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Raven\Raven_PointDefenseDroneAttackLaunch1.wav"/>
+        <AssetArray File="Assets\Sounds\Terran\Raven\Raven_PointDefenseDroneAttackLaunch2.wav"/>
+        <DupeDestroyCount value="4"/>
+        <Pitch value="0.000000,3.000000"/>
+        <SustainFade index="1" Time="2500"/>
+    </CSound>
 </Catalog>

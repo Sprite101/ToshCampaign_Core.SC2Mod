@@ -8,6 +8,9 @@
         <Model value="Assets\Effects\Terran\MedicHeal\MedicHeal.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
+    <CModel id="MobileDefensiveBot@Death" parent="UnitDeath" Race="Protoss">
+        <Model value="Assets\Units\Terran\PointDefenseDroneDeathEx1\PointDefenseDroneDeathEx1.m3"/>
+    </CModel>
     <CModel id="MobileHealingBot@Unit" parent="Unit" Race="Protoss">
         <Model value="Assets\Units\Terran\Repair_Drone_MP\Repair_Drone_MP.m3"/>
         <Occlusion value="Show"/>
@@ -66,6 +69,22 @@
     </CModel>
     <CModel id="EMPRound@SelfDestructImpactEffect" parent="ImpactFX">
         <Model value="Assets\Effects\Terran\TerranLargeUnitDeath\TerranLargeUnitDeath.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="MobileDefensiveBot@Unit" parent="Unit" Race="Protoss">
+        <Model value="Assets\Units\Terran\PointDefenseDrone\PointDefenseDrone.m3"/>
+        <Occlusion value="Show"/>
+        <PlanetPanelCamera value="Star2CameraLow05"/>
+        <SquibTypeDefault value="Metal"/>
+        <TechPurchaseCamera value="Star2CameraLow05"/>
+        <UnitGlossaryCamera value="Star2CameraLow05"/>
+    </CModel>
+    <CModel id="MobileDefensiveBot@BeamImpact" parent="ImpactFX">
+        <Model value="Assets\Effects\Terran\PointDefenseBeamImpact\PointDefenseBeamImpact.m3"/>
+        <EditorCategories value="Race:Terran"/>
+    </CModel>
+    <CModel id="MobileDefensiveBot@Beam" parent="PersistentSpellFX">
+        <Model value="Assets\Effects\Terran\TargetingDroneBeam\TargetingDroneBeam.m3"/>
         <EditorCategories value="Race:Terran"/>
     </CModel>
     <CModel id="ProximityMine@Indicator" parent="RacePersistentSpellFX" Race="Terran">

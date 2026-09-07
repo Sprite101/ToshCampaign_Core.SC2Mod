@@ -21,6 +21,11 @@
         <AlertIcon value="Assets\Textures\btn-upgrade-terran-nova-defensivedrone.dds"/>
         <EditorCategories value="Race:Terran"/>
     </CButton>
+    <CButton id="MobileDefensiveBot@Hangar">
+        <Icon value="Assets\Textures\btn-upgrade-terran-nova-defensivedrone.dds"/>
+        <AlertIcon value="Assets\Textures\btn-upgrade-terran-nova-defensivedrone.dds"/>
+        <EditorCategories value="Race:Terran"/>
+    </CButton>
     <CButton id="Snipe_Tosh">
         <Icon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>
         <AlertIcon value="Assets\Textures\btn-ability-terran-snipe-color.dds"/>

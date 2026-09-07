@@ -121,6 +121,11 @@
         </Modification>
         <RemoveValidatorArray value="CasterNotAttacking"/>
     </CBehaviorBuff>
+    <CBehaviorBuff id="MobileDefensiveBot@PointDefenseReady">
+        <InfoFlags index="Hidden" value="1"/>
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Duration value="3"/>
+    </CBehaviorBuff>
     <CBehaviorBuff id="ProximityMine@Initial">
         <InfoIcon value="Assets\Textures\btn-ability-terran-activatemine.dds"/>
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>

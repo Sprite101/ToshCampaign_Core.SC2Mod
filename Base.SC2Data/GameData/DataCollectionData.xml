@@ -32,6 +32,9 @@
     <CDataCollectionAbil id="MobileHealingBot">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
     </CDataCollectionAbil>
+    <CDataCollectionAbil id="MobileDefensiveBot">
+        <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
+    </CDataCollectionAbil>
     <CDataCollectionUnit id="Modified">
         <EditorCategories value=""/>
     </CDataCollectionUnit>

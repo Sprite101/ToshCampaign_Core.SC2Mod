@@ -5,8 +5,8 @@
         <Launch value="ReleaseAtSource"/>
         <Flags index="AutoCreate" value="1"/>
         <Flags index="Retarget" value="1"/>
-        <Leash value="8"/>
-        <InfoArray index="Ammo1" CountStart="2" Distance="1" Manage="Recall" Unit="MobileHealingBot">
+        <Leash value="6"/>
+        <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Ignore" Unit="MobileHealingBot">
             <Charge HideCount="1" Link="MobileHealingBot" Location="Unit"/>
             <Cooldown Link="Abil/##id##"/>
             <Button DefaultButtonFace="MobileHealingBot@Hanger">
@@ -18,8 +18,7 @@
         </InfoArray>
         <EffectArray index="Create" value="MobileHealingBot@RecallAB"/>
         <ExternalAngle value="-119.9926"/>
-        <ExternalAngle value="119.9926"/>
-        <MaxCount value="2"/>
+        <MaxCount value="1"/>
     </CAbilArmMagazine>
     <CAbilEffectTarget id="HealingBotHeal">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
@@ -35,7 +34,6 @@
             <SortArray value="TSDistance"/>
         </TargetSorts>
         <Range value="4"/>
-        <AutoCastAcquireLevel value="Defensive"/>
         <AutoCastFilters value="Biological,Visible;Self,Neutral,Enemy,Missile,Dead,Hidden,Invulnerable"/>
         <AutoCastRange value="6"/>
         <AutoCastValidatorArray value="NotWarpingIn"/>
@@ -103,6 +101,25 @@
             </SectionArray>
         </InfoArray>
     </CAbilMorph>
+    <CAbilArmMagazine id="MobileDefensiveBot@Hangar">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Launch value="ReleaseAtSource"/>
+        <Flags index="AutoCreate" value="1"/>
+        <Flags index="Retarget" value="1"/>
+        <Leash value="6"/>
+        <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Ignore" Unit="MobileDefensiveBot">
+            <Charge HideCount="1" Link="MobileDefensiveBot" Location="Unit"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="MobileDefensiveBot@Hangar">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <ExternalAngle value="119.9926"/>
+        <MaxCount value="1"/>
+    </CAbilArmMagazine>
     <CAbilEffectInstant id="ProximityMine@Activate">
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
         <Effect index="0" value="ProximityMine@InitialSet"/>

@@ -195,6 +195,68 @@
     <CActorSound id="EMPRound@SelfDestructImpactSound" parent="SoundOneShot">
         <On Terms="Effect.EMPRound@SelfDestructSearchArea.Start" Send="Create"/>
     </CActorSound>
+    <CActorUnit id="MobileDefensiveBot" parent="GenericUnitStandard" unitName="MobileDefensiveBot">
+        <On Terms="Behavior.WarpInEffect15.On" Send="ModelSwap ObserverWarpIn"/>
+        <On Terms="Behavior.WarpInEffect15.On" Send="$Birth"/>
+        <On Terms="Behavior.WarpInEffect15.Off" Send="ModelSwap Observer"/>
+        <On Terms="Behavior.WarpInEffect15.Off" Send="AnimBaselineStart"/>
+        <On Terms="UnitHeightUpdate.*.Land" Send="Create Observer_Land"/>
+        <On Terms="Behavior.PointDefenseReady.On" Send="AnimBracketStart Work Work,Start Work Work,End"/>
+        <On Terms="Behavior.PointDefenseReady.Off" Send="AnimBracketStop Work"/>
+        <Model value="MobileDefensiveBot@Unit"/>
+        <Scale value="0.500000"/>
+        <AnimBlendTime value="1.200000"/>
+        <BuildModel value="ProtossGenericWarpInOut"/>
+        <DeathArray index="Normal" ModelLink="MobileDefensiveBot@Death" SoundLink="Observer_Explode"/>
+        <PlacementModel value="MobileDefensiveBot@Unit"/>
+        <PortraitModel value="ObserverPortrait"/>
+        <BarOffset value="40"/>
+        <BarWidth value="42"/>
+        <GroupIcon>
+            <Image value="Assets\Textures\Wireframe-Protoss-Observer.dds"/>
+        </GroupIcon>
+        <HeroIcon value="Assets\Textures\btn-unit-protoss-observer.dds"/>
+        <LifeArmorIcon value="Assets\Textures\btn-upgrade-terran-shipplatinglevel0.dds"/>
+        <SoundArray index="Ready" value="Observer_Ready"/>
+        <SoundArray index="What" value="Observer_What"/>
+        <SoundArray index="Yes" value="Observer_Yes"/>
+        <SoundArray index="Pissed" value="Observer_Pissed"/>
+        <UnitIcon value="Assets\Textures\btn-unit-protoss-observer.dds"/>
+        <Wireframe>
+            <Image value="Assets\Textures\Wireframe-Protoss-Observer.dds"/>
+        </Wireframe>
+        <WireframeShield>
+            <Image value="Assets\Textures\Wireframe-Protoss-Observer-Shield01.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Observer-Shield02.dds"/>
+            <Image value="Assets\Textures\Wireframe-Protoss-Observer-Shield03.dds"/>
+        </WireframeShield>
+    </CActorUnit>
+    <CActorModel id="MobileDefensiveBot@ImpactModel" parent="ModelAnimationStyleContinuous">
+        <On Terms="Effect.MobileDefensiveBot@Damage.Start; At Target" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.125000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+        <On Terms="ActorCreation" Send="$Death"/>
+        <On Terms="ActorOrphan" Send="Destroy"/>
+        <Host Subject="_Missile"/>
+        <Model value="MobileDefensiveBot@BeamImpact"/>
+    </CActorModel>
+    <CActorBeamSimple id="MobileDefensiveBot@Beam" parent="BeamSimpleAnimationStyleContinuous">
+        <On Terms="Effect.MobileDefensiveBot@Damage.Start; At Caster" Send="Create"/>
+        <On Terms="ActorCreation" Send="TimerSet 0.125000 Die"/>
+        <On Terms="TimerExpired; TimerName Die" Send="Destroy"/>
+        <HostLaunch Subject="_Selectable" Actor="Find"/>
+        <HostLaunchSiteOps Ops="SOpAttachCenter"/>
+        <HostImpact Subject="_Missile" Actor="Find"/>
+        <HostImpactSiteOps Ops="SOpAttachCenter"/>
+    </CActorBeamSimple>
+    <CActorSound id="MobileDefensiveBot@ImpactSound" parent="SoundOneShot">
+        <On Terms="Effect.MobileDefensiveBot@Damage.Start; At Target" Send="Create"/>
+        <Host Subject="::Creator"/>
+    </CActorSound>
+    <CActorSound id="MobileDefensiveBot@LaunchSound" parent="SoundOneShot">
+        <On Terms="Effect.MobileDefensiveBot@Damage.Start; At Caster" Send="Create"/>
+        <Host Subject="MobileDefensiveBot"/>
+    </CActorSound>
     <CActorModel id="ProximityMine@Indicator" parent="ModelAnimationStyleOneShot">
         <On Terms="Effect.ProximityMine@Dummy.Start" Send="Create"/>
         <On Terms="Effect.ProximityMine@Dummy.Stop" Send="Destroy"/>

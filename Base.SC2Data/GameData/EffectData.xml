@@ -32,7 +32,7 @@
         <LaunchUnit Value="Caster"/>
         <ImpactUnit Value="Source"/>
         <VitalArray index="Life">
-            <Change value="0.5"/>
+            <Change value="0.25"/>
         </VitalArray>
     </CEffectModifyUnit>
     <CEffectApplyBehavior id="HealingBotHeal@TargetAB">
@@ -200,6 +200,55 @@
         <EditorCategories value="Race:Terran"/>
         <Behavior value="HackIn_Tosh@Benign"/>
     </CEffectApplyBehavior>
+    <CEffectApplyBehavior id="MobileDefensiveBot@AB">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Behavior value="MobileDefensiveBot@PointDefenseReady"/>
+    </CEffectApplyBehavior>
+    <CEffectModifyUnit id="MobileDefensiveBot@Damage">
+        <EditorCategories value="Race:Terran"/>
+        <Marker Link="Weapon/PointDefenseLaser">
+            <MatchFlags index="Link" value="1"/>
+        </Marker>
+        <ModifyFlags index="Hide" value="1"/>
+        <ModifyFlags index="NullifyMissile" value="1"/>
+    </CEffectModifyUnit>
+    <CEffectDamage id="MobileDefensiveBot@VisibilityDummyDamage">
+        <EditorCategories value="Race:Terran"/>
+        <ResponseFlags index="Acquire" value="1"/>
+        <ResponseFlags index="Flee" value="1"/>
+        <Visibility value="Visible"/>
+        <Flags index="Notification" value="1"/>
+    </CEffectDamage>
+    <CEffectModifyUnit id="MobileDefensiveBot@MURemoveEnergy">
+        <ValidatorArray value="PointDefenseLaserEnergyTargetFilters"/>
+        <EditorCategories value="Race:Terran"/>
+        <ImpactUnit Value="Caster"/>
+        <VitalArray index="Energy">
+            <Change value="1"/>
+        </VitalArray>
+    </CEffectModifyUnit>
+    <CEffectSet id="MobileDefensiveBot@InitialSet">
+        <ValidatorArray value="PointDefenseDroneUnitFilter"/>
+        <EditorCategories value=""/>
+        <EffectArray value="MobileDefensiveBot@SearchArea"/>
+        <EffectArray value="MobileDefensiveBot@AB"/>
+    </CEffectSet>
+    <CEffectSet id="MobileDefensiveBot@SearchSet">
+        <ValidatorArray value="PointDefenseDroneUnitFilter"/>
+        <EditorCategories value="Race:Terran"/>
+        <EffectArray value="MobileDefensiveBot@Damage"/>
+        <EffectArray value="MobileDefensiveBot@VisibilityDummyDamage"/>
+        <EffectArray value="MobileDefensiveBot@AB"/>
+        <EffectArray value="MobileDefensiveBot@MURemoveEnergy"/>
+    </CEffectSet>
+    <CEffectEnumArea id="MobileDefensiveBot@SearchArea">
+        <ValidatorArray value="PointDefenseSearchTargetFilters"/>
+        <EditorCategories value=""/>
+        <ImpactLocation Value="SourceUnit"/>
+        <SearchFilters value="Missile,Visible;Self,Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
+        <AreaArray Radius="8" Effect="MobileDefensiveBot@SearchSet"/>
+    </CEffectEnumArea>
     <CEffectDamage id="ProximityMine@Damage2">
         <EditorCategories value="Race:Terran"/>
         <ResponseFlags index="Acquire" value="1"/>
