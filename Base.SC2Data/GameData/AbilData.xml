@@ -4,7 +4,6 @@
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <Launch value="ReleaseAtSource"/>
         <Flags index="AutoCreate" value="1"/>
-        <Flags index="Retarget" value="1"/>
         <Flags index="ShowStatus" value="0"/>
         <Leash value="6"/>
         <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Recall" Unit="MobileHealingBot">
@@ -40,10 +39,10 @@
         <AutoCastValidatorArray value="NotWarpingIn"/>
         <AutoCastValidatorArray value="HealingBotHeal@HealNotCasting"/>
         <AutoCastValidatorArray value="HealingBotHeal@TargetNotBeingHealed"/>
-        <AutoCastValidatorArray value="CasterIsNotMovingOrStopped"/>
         <DefaultError value="RequiresHealTarget"/>
         <CmdButtonArray index="Execute" DefaultButtonFace="HealingBotHeal"/>
         <AcquireAttackers value="1"/>
+        <Arc value="360"/>
     </CAbilEffectTarget>
     <CAbilEffectTarget id="EMPRound">
         <Alignment value="Negative"/>
@@ -121,6 +120,37 @@
         </InfoArray>
         <ExternalAngle value="119.9926"/>
         <MaxCount value="1"/>
+    </CAbilArmMagazine>
+    <CAbilArmMagazine id="MobileBotsMagazine">
+        <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
+        <Launch value="ReleaseAtSource"/>
+        <Flags index="AutoCreate" value="1"/>
+        <Flags index="ShowStatus" value="0"/>
+        <Leash value="6"/>
+        <InfoArray index="Ammo1" CountStart="1" Distance="1" Manage="Recall" Unit="MobileHealingBot">
+            <Charge HideCount="1" Link="MobileHealingBot" Location="Unit"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="MobileHealingBot@Hanger">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <InfoArray index="Ammo2" CountStart="1" Distance="1" Manage="Recall" Unit="MobileDefensiveBot">
+            <Charge HideCount="1" Link="MobileDefensiveBot" Location="Unit"/>
+            <Cooldown Link="Abil/##id##"/>
+            <Button DefaultButtonFace="MobileDefensiveBot@Hangar">
+                <Flags index="ToSelection" value="1"/>
+            </Button>
+            <Flags index="AutoBuild" value="1"/>
+            <Flags index="AutoBuildOn" value="1"/>
+            <Flags index="External" value="1"/>
+        </InfoArray>
+        <EffectArray index="Create" value="MobileHealingBot@RecallAB"/>
+        <ExternalAngle value="-119.9926"/>
+        <ExternalAngle value="119.9926"/>
+        <MaxCount value="2"/>
     </CAbilArmMagazine>
     <CAbilEffectInstant id="ProximityMine@Activate">
         <EditorCategories value="AbilityorEffectType:Units,Race:Terran"/>
@@ -257,7 +287,7 @@
     <CAbilEffectInstant id="MobileDefensiveBot@Overload">
         <EditorCategories value="Race:Terran,AbilityorEffectType:Units"/>
         <InfoTooltipPriority value="1"/>
-        <Effect index="0" value="MobileDefensiveBot@OverloadIterateMagazine"/>
+        <Effect index="0" value="MobileDefensiveBot@OverloadCP"/>
         <Flags index="Transient" value="1"/>
         <Cost>
             <Cooldown TimeUse="25"/>

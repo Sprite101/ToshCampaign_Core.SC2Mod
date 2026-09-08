@@ -3,7 +3,6 @@
     <CUnit id="MobileHealingBot">
         <Race value="Terr"/>
         <Mob value="Campaign"/>
-        <FlagArray index="Unselectable" value="1"/>
         <FlagArray index="Untargetable" value="1"/>
         <FlagArray index="Invulnerable" value="1"/>
         <FlagArray index="AISupport" value="1"/>
@@ -296,9 +295,8 @@
         <AbilArray Link="Flashbang_Tosh"/>
         <AbilArray Link="EMPRound"/>
         <AbilArray Link="HackIn_Tosh"/>
-        <AbilArray Link="MobileHealingBot@Hanger"/>
-        <AbilArray Link="MobileDefensiveBot@Hangar"/>
         <AbilArray Link="MobileDefensiveBot@Overload"/>
+        <AbilArray Link="MobileBotsMagazine"/>
         <BehaviorArray Link="HeroDetectorRadar"/>
         <WeaponArray Link="C10CanisterRifle_Default"/>
         <CardLayouts>

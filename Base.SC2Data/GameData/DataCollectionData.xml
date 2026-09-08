@@ -29,6 +29,11 @@
     <CDataCollectionAbil id="HealingBotHeal">
         <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran"/>
     </CDataCollectionAbil>
+    <CDataCollectionAbil id="MobileBotsMagazine">
+        <EditorCategories value="DataGroup:Ability,DataFamily:Campaign,Race:Terran"/>
+        <Button value="HealingBotHeal"/>
+        <TechInfoAbil value="HealingBotHeal"/>
+    </CDataCollectionAbil>
     <CDataCollectionAbil id="MobileHealingBot">
         <EditorCategories value="DataGroup:Unit,DataFamily:Campaign,Race:Terran,ObjectType:Unit"/>
     </CDataCollectionAbil>

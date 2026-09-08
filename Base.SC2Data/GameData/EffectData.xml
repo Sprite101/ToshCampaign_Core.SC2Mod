@@ -3,6 +3,7 @@
     <CEffectApplyBehavior id="MobileDefensiveBot@OverloadAB">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="MobileDefensiveBot@Overload"/>
+        <ValidatorArray index="0" value="MobileDefensiveBot@IsMobileDefensiveBot"/>
     </CEffectApplyBehavior>
     <CEffectApplyBehavior id="MobileHealingBot@RecallAB">
         <EditorCategories value="Race:Terran"/>
@@ -253,6 +254,14 @@
         <SearchFilters value="Missile,Visible;Self,Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"/>
         <AreaArray Radius="8" Effect="MobileDefensiveBot@SearchSet"/>
     </CEffectEnumArea>
+    <CEffectIssueOrder id="HealingBotHeal@RefreshStatusIssueOrder">
+        <EditorCategories value="Race:Terran"/>
+        <WhichUnit Value="Caster"/>
+        <Abil value="move"/>
+        <AbilCmdIndex value="4"/>
+        <CmdFlags index="Preempt" value="1"/>
+        <Target Value="TargetPoint"/>
+    </CEffectIssueOrder>
     <CEffectDamage id="ProximityMine@Damage2">
         <EditorCategories value="Race:Terran"/>
         <ResponseFlags index="Acquire" value="1"/>
@@ -338,7 +347,15 @@
     <CEffectEnumMagazine id="MobileDefensiveBot@OverloadIterateMagazine">
         <EditorCategories value="Race:Terran"/>
         <EffectExternal value="MobileDefensiveBot@OverloadAB"/>
+        <WhichUnit Value="Caster"/>
     </CEffectEnumMagazine>
+    <CEffectCreatePersistent id="MobileDefensiveBot@OverloadCP">
+        <EditorCategories value="Race:Terran"/>
+        <OffsetVectorStartLocation Value="CasterUnit"/>
+        <PeriodCount value="10"/>
+        <PeriodicEffectArray value="MobileDefensiveBot@OverloadIterateMagazine"/>
+        <PeriodicPeriodArray value="0.0625"/>
+    </CEffectCreatePersistent>
     <CEffectApplyBehavior id="Snipe_Tosh@StunAB">
         <EditorCategories value="Race:Terran"/>
         <Behavior value="Snipe_Tosh@Stun"/>
